@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Redis&#39;s data type</title>
+      <link href="/JasmineRain.github.io/2025/08/18/Redis-s-data-type/"/>
+      <url>/JasmineRain.github.io/2025/08/18/Redis-s-data-type/</url>
+      
+        <content type="html"><![CDATA[<h2 id="�ַ���String"><a href="#�ַ���String" class="headerlink" title="�ַ���String"></a>�ַ���String</h2><p>���������ݴ洢��Ԫ�����Դ洢�ַ������������߸�����<br>string�����Ƕ����ư�ȫ�ġ�redis��string���԰����κ����ݣ�����jpgͼƬ�������л��Ķ���<br>string������redis��������������ͣ�string���͵�ֵ����ܴ洢512mb</p><h3 id="string��������"><a href="#string��������" class="headerlink" title="string��������"></a>string��������</h3><ul><li>SET key value:���ü���ֵ</li><li>GET key:��ȡ����ֵ</li><li>INCR key:������ֵ��1</li><li>DECR key:������ֵ��1</li><li>APPEND key value:��ֵ׷�ӵ�����ֵ֮��</li></ul><h2 id="��ϣhash"><a href="#��ϣhash" class="headerlink" title="��ϣhash"></a>��ϣhash</h2><p>һ����ֵ�Լ��ϣ����Դ洢����ֶ�<br>redis hash��һ����ֵ�Լ��ϣ�������һ��С�͵�noSQL���ݿ�<br>redis hash��һ��string���͵�field��value��ӳ�����hash�ر��ʺ����ڴ洢����<br>ÿ����ϣ�����Դ洢2^32-1����ֵ��</p><h3 id="hash��������"><a href="#hash��������" class="headerlink" title="hash��������"></a>hash��������</h3><ul><li>HSET key field value:���ù�ϣ�����ֶε�ֵ</li><li>HGET key field:��ȡ��ϣ�����ֶε�ֵ</li><li>HGETALL key:��ȡ��ϣ���������ֶκ�ֵ</li><li>HDEL key field:ɾ����ϣ���е�һ�������ֶ�</li></ul><h2 id="�б�list"><a href="#�б�list" class="headerlink" title="�б�list"></a>�б�list</h2><p>һ���򵥵��б������Դ洢һϵ�е��ַ���Ԫ��<br>redis�б�����򵥵��ַ����б������ղ���˳������<br>�б������Դ洢2^32-1��Ԫ��</p><h3 id="list��������"><a href="#list��������" class="headerlink" title="list��������"></a>list��������</h3><ul><li>LPUSH key value:��ֵ���뵽�б�ͷ��</li><li>RPUSH key value:��ֵ���뵽�б�β��</li><li>LPOP key:�Ƴ�����ȡ�б��ĵ�һ��Ԫ��</li><li>RPOP key:�Ƴ�����ȡ�б������һ��Ԫ��</li><li>LRANGE key start stop:��ȡ�б���ָ����Χ(start-stop)�ڵ�Ԫ��</li></ul><h2 id="����set"><a href="#����set" class="headerlink" title="����set"></a>����set</h2><p>һ�����򼯺ϣ����Դ洢���ظ����ַ���Ԫ��<br>redis��set��string���͵����򼯺�<br>������ͨ����ϣ��ʵ�ֵģ��������ӡ�ɾ�������ҵĸ��Ӷȶ���O(1)</p><h3 id="set��������"><a href="#set��������" class="headerlink" title="set��������"></a>set��������</h3><ul><li>SADD key value:�򼯺�����һ��������Ա</li><li>SREM key value:�Ƴ������е�һ��������Ա</li><li>SMEMBERS key:���ؼ����е����г�Ա</li><li>SISMEMBER key value:�ж��Ƿ��Ǽ��ϵĳ�Ա</li></ul><h2 id="���򼯺�sorted-set"><a href="#���򼯺�sorted-set" class="headerlink" title="���򼯺�sorted set"></a>���򼯺�sorted set</h2><p>�����ڼ��ϣ�����ÿ��Ԫ�ض���һ������score��֮����<br>redis zset��setһ��Ҳ��string����Ԫ�صļ��ϣ��Ҳ������ظ��ĳ�Ա<br>��ͬ����ÿ��Ԫ�ض������һ��double���͵ķ�����redis����ͨ��������Ϊ�����еĳ�Ա���д�С���������<br>zset�ĳ�Ա��Ψһ�ģ�������ȴ�����ظ�</p><h3 id="sorted-zset��������"><a href="#sorted-zset��������" class="headerlink" title="sorted zset��������"></a>sorted zset��������</h3><ul><li>ZADD key score value:�����򼯺�����һ��������Ա��������Ѵ��ڳ�Ա�ķ���</li><li>ZRANGE key start stop [WITHSCORES]:����ָ����Χ�ڵĳ�Ա</li><li>ZREM key value:�Ƴ����򼯺��е�һ��������Ա</li><li>ZSCORE key value:�������򼯺��У���Ա�ķ���ֵ</li></ul><h2 id="λͼ-Bitmaps"><a href="#λͼ-Bitmaps" class="headerlink" title="λͼ Bitmaps"></a>λͼ Bitmaps</h2><p>�����ַ������ͣ����Զ�ÿ��λ���в���<br>λ���飬���Զ��ַ�������λ����<br>������ʵ�ֲ�¡��������λ����</p><h2 id="����־-HyperLogLogs"><a href="#����־-HyperLogLogs" class="headerlink" title="����־ HyperLogLogs"></a>����־ HyperLogLogs</h2><p>���ڻ���ͳ�ƣ����Թ��㼯���е�ΨһԪ������</p><h2 id="�����ռ�Geospatial"><a href="#�����ռ�Geospatial" class="headerlink" title="�����ռ�Geospatial"></a>�����ռ�Geospatial</h2><p>���ڴ洢����λ����Ϣ<br>֧�ֵ����ռ������Ͱ뾶��ѯ</p><h2 id="����-����Pub-Sub"><a href="#����-����Pub-Sub" class="headerlink" title="����&#x2F;����Pub&#x2F;Sub"></a>����&#x2F;����Pub&#x2F;Sub</h2><p>һ����Ϣͨ��ģʽ�������ͻ��˶�����Ϣͨ���������շ�������ͨ������Ϣ</p><h2 id="��Streams"><a href="#��Streams" class="headerlink" title="��Streams"></a>��Streams</h2><p>������Ϣ���к���־�洢��֧����Ϣ�ĳ־û���ʱ������</p><h2 id="g��Modules"><a href="#g��Modules" class="headerlink" title="ģ��Modules"></a>ģ��Modules</h2><p>redis֧�ֶ�̬����ģ�飬������չredis�Ĺ���</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> data type </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Merge sort</title>
       <link href="/JasmineRain.github.io/2025/08/18/Merge-sort/"/>
       <url>/JasmineRain.github.io/2025/08/18/Merge-sort/</url>
