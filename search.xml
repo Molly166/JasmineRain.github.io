@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Linux common commands</title>
+      <link href="/JasmineRain.github.io/2025/08/19/Linux-common-commands/"/>
+      <url>/JasmineRain.github.io/2025/08/19/Linux-common-commands/</url>
+      
+        <content type="html"><![CDATA[<h2 id="文件与目录操作"><a href="#文件与目录操作" class="headerlink" title="文件与目录操作"></a>文件与目录操作</h2><p>ls -lh<br>以人类可读方式显示文件大小</p><p>ls -ltr<br>按时间排序</p><p>cd -<br>返回上一个目录</p><p>tree<br>树型结构显示目录，需要安装</p><p>stat file<br>查看文件详细信息</p><p>basename &#x2F;path&#x2F;file.txt<br>获取文件名</p><p>dirname &#x2F;path&#x2F;file.txt<br>获取文件路径</p><h2 id="文件查看与处理"><a href="#文件查看与处理" class="headerlink" title="文件查看与处理"></a>文件查看与处理</h2><p>cat -n file<br>显示行号</p><p>tac file<br>反向输出文件</p><p>less -N file<br>分页并显示行号</p><p>strings file<br>提取二进制文件中的字符串</p><p>split -l 1000 big.txt part_<br>按行切割文件</p><p>sort file<br>排序</p><p>uniq file<br>去重</p><p>diff file1 file2<br>比较两个文件</p><p>cmp file1 file2<br>比较两个文件是否相同</p><h2 id="权限与用户管理"><a href="#权限与用户管理" class="headerlink" title="权限与用户管理"></a>权限与用户管理</h2><p>chmod 644 file<br>rw-r–r–</p><p>chmod u+x file<br>给用户添加执行权限</p><p>umask<br>查看默认权限掩码</p><p>chgrp group file<br>修改文件所属组</p><p>groups user<br>查看用户所属组</p><p>useradd newuser<br>添加用户</p><p>usermod -aG sudo u<br>将用户加入sudo组</p><p>userdel -r user<br>删除用户及家目录</p><p>groupadd dev<br>新建用户组</p><h2 id="系统信息与硬件"><a href="#系统信息与硬件" class="headerlink" title="系统信息与硬件"></a>系统信息与硬件</h2><p>uname -r<br>查看内核版本</p><p>cat &#x2F;etc&#x2F;os-release<br>系统版本信息</p><p>hostnamectl<br>查看主机信息</p><p>uptime -p<br>只显示运行时长</p><p>lsblk<br>显示磁盘挂载</p><p>blkid<br>查看磁盘 UUID</p><p>mount &#x2F;dev&#x2F;sdb1 &#x2F;mnt<br>挂载磁盘</p><p>umount &#x2F;mnt<br>卸载磁盘</p><p>lscpu<br>CPU 信息</p><p>lsusb<br>USB 设备</p><p>lspci<br>PCI 设备</p><h2 id="进程与任务管理"><a href="#进程与任务管理" class="headerlink" title="进程与任务管理"></a>进程与任务管理</h2><p>ps -ef | grep ssh<br>查找进程</p><p>pgrep -u user<br>查看用户进程 PID</p><p>kill -15 1234<br>优雅终止进程</p><p>kill -9 1234<br>强制终止</p><p>pkill nginx<br>杀死 nginx 进程</p><p>top -u user<br>查看用户进程</p><p>htop<br>更友好的进程监控</p><p>jobs<br>后台任务</p><p>fg %1<br>任务恢复前台</p><p>bg %1<br>后台继续运行</p><h2 id="磁盘与文件系统"><a href="#磁盘与文件系统" class="headerlink" title="磁盘与文件系统"></a>磁盘与文件系统</h2><p>df -Th<br>查看磁盘文件系统类型</p><p>du -sh *<br>查看当前目录下文件大小</p><p>ls -lh &#x2F;var&#x2F;log<br>查看日志大小</p><p>ncdu<br>图形化磁盘分析工具（需安装）</p><p>fsck &#x2F;dev&#x2F;sdb1<br>检查文件系统</p><p>mount -o remount,rw &#x2F;<br>重新挂载为可写</p><h2 id="压缩与解压"><a href="#压缩与解压" class="headerlink" title="压缩与解压"></a>压缩与解压</h2><p>tar -cvf a.tar dir&#x2F;<br>打包</p><p>tar -xvf a.tar<br>解包</p><p>tar -czvf a.tar.gz dir<br>打包并压缩</p><p>tar -xzvf a.tar.gz<br>解压缩</p><p>zip -r a.zip dir&#x2F;<br>压缩 zip</p><p>unzip a.zip -d dir&#x2F;<br>解压到目录</p><p>xz -z file<br>压缩为 .xz</p><p>xz -d file.xz<br>解压</p><h2 id="网络与传输"><a href="#网络与传输" class="headerlink" title="网络与传输"></a>网络与传输</h2><p>ping -c 4 baidu.com<br>ping 4 次</p><p>curl -I <a href="http://url/">http://url</a><br>查看响应头</p><p>curl -O <a href="http://url/file">http://url/file</a><br>下载文件</p><p>wget -c <a href="http://url/file">http://url/file</a><br>断点续传下载</p><p>scp file user@ip:&#x2F;dir&#x2F;<br>上传文件</p><p>scp user@ip:&#x2F;dir&#x2F;file .&#x2F;<br>下载文件</p><p>rsync -avz src&#x2F; dest&#x2F;<br>高效同步文件</p><p>ssh user@ip<br>远程登录</p><p>ssh -p 2222 user@ip<br>指定端口</p><h2 id="网络管理与排错"><a href="#网络管理与排错" class="headerlink" title="网络管理与排错"></a>网络管理与排错</h2><p>ifconfig<br>查看网卡信息（旧）</p><p>ip addr show<br>查看网卡信息（推荐）</p><p>ip route<br>查看路由表</p><p>netstat -tulnp<br>查看端口</p><p>ss -lntp<br>新版端口查看</p><p>traceroute baidu.com<br>路由跟踪</p><p>dig baidu.com<br>DNS 解析</p><p>nslookup baidu.com<br>DNS 查询</p><p>telnet ip port<br>测试端口连通性</p><h2 id="软件包管理"><a href="#软件包管理" class="headerlink" title="软件包管理"></a>软件包管理</h2><h3 id="Ubuntu-Debian系"><a href="#Ubuntu-Debian系" class="headerlink" title="Ubuntu&#x2F;Debian系"></a>Ubuntu&#x2F;Debian系</h3><p>apt update<br>apt upgrade<br>apt install pkg<br>apt remove pkg<br>dpkg -i file.deb<br>安装本地包</p><h3 id="CentOS-RedHat系"><a href="#CentOS-RedHat系" class="headerlink" title="CentOS&#x2F;RedHat系"></a>CentOS&#x2F;RedHat系</h3><p>yum install pkg<br>yum remove pkg<br>yum update<br>rpm -ivh file.rpm<br>安装本地包</p><h2 id="日志与系统监控"><a href="#日志与系统监控" class="headerlink" title="日志与系统监控"></a>日志与系统监控</h2><p>journalctl -xe<br>查看系统日志</p><p>tail -f &#x2F;var&#x2F;log&#x2F;syslog<br>实时日志</p><p>tail -f &#x2F;var&#x2F;log&#x2F;messages<br>last<br>登录历史</p><p>w<br>登录用户及进程</p><p>uptime<br>系统负载</p><p>vmstat 2<br>每 2 秒显示内存&#x2F;CPU</p><p>iostat -x 1<br>磁盘 IO</p><p>sar -u 1 10<br>CPU 性能监控</p><h2 id="Shell快捷与工具"><a href="#Shell快捷与工具" class="headerlink" title="Shell快捷与工具"></a>Shell快捷与工具</h2><p>!!<br>执行上一条命令</p><p>!ls<br>执行最近的 ls 命令</p><p>history | grep xx<br>搜索历史命令</p><p>alias ll&#x3D;’ls -l’<br>设置别名</p><p>unalias ll<br>删除别名</p><p>echo $PATH<br>查看环境变量</p><p>export VAR&#x3D;123<br>设置环境变量</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> commands </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to use git</title>
       <link href="/JasmineRain.github.io/2025/08/18/How-to-use-git/"/>
       <url>/JasmineRain.github.io/2025/08/18/How-to-use-git/</url>
