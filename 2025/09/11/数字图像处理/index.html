@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数字图像处理 | JasmineRain's blog</title><meta name="author" content="JasmineRain"><meta name="copyright" content="JasmineRain"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.1图像及其分类基本概念 图：是物体反射或投射电磁波的分布  像：是人的视觉系统对接受的图信息在大脑中形成的印象  图像:是图和像的结合。具体来说，就是用各种观测系统以不同形式和手段观测客观世界而获得的、可以直接或间接作用于人的视觉系统而产生的视知觉实体  图像处理：是对图形信息进行加工以满足人的视觉或应用需求的行为。处理的方法通常有：模拟图像处理、数字图像处理、光电结合处理。  模拟图像处理：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字图像处理">
+<meta property="og:url" content="https://molly166.github.io/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="JasmineRain&#39;s blog">
+<meta property="og:description" content="1.1图像及其分类基本概念 图：是物体反射或投射电磁波的分布  像：是人的视觉系统对接受的图信息在大脑中形成的印象  图像:是图和像的结合。具体来说，就是用各种观测系统以不同形式和手段观测客观世界而获得的、可以直接或间接作用于人的视觉系统而产生的视知觉实体  图像处理：是对图形信息进行加工以满足人的视觉或应用需求的行为。处理的方法通常有：模拟图像处理、数字图像处理、光电结合处理。  模拟图像处理：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png">
+<meta property="article:published_time" content="2025-09-11T02:02:33.000Z">
+<meta property="article:modified_time" content="2025-09-11T02:56:45.701Z">
+<meta property="article:author" content="JasmineRain">
+<meta property="article:tag" content="数字图像处理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "数字图像处理",
+  "url": "https://molly166.github.io/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/",
+  "image": "https://molly166.github.io/JasmineRain.github.io/img/head1.png",
+  "datePublished": "2025-09-11T02:02:33.000Z",
+  "dateModified": "2025-09-11T02:56:45.701Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "JasmineRain",
+      "url": "https://molly166.github.io/JasmineRain.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/JasmineRain.github.io/img/favicon.png"><link rel="canonical" href="https://molly166.github.io/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/JasmineRain.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/JasmineRain.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/JasmineRain.github.io/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数字图像处理',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/JasmineRain.github.io/img/background2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-color: rgba(0,0,0,0);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/JasmineRain.github.io/"><span class="site-name">JasmineRain's blog</span></a><a class="nav-page-title" href="/JasmineRain.github.io/"><span class="site-name">数字图像处理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">数字图像处理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-11T02:02:33.000Z" title="发表于 2025-09-11 10:02:33">2025-09-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-11T02:56:45.701Z" title="更新于 2025-09-11 10:56:45">2025-09-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/JasmineRain.github.io/categories/%E4%B8%93%E4%B8%9A%E9%80%89%E4%BF%AE%E8%AF%BE/">专业选修课</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="1-1图像及其分类"><a href="#1-1图像及其分类" class="headerlink" title="1.1图像及其分类"></a>1.1图像及其分类</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li><p>图：是物体反射或投射<strong>电磁波</strong>的分布</p>
+</li>
+<li><p>像：是人的视觉系统对接受的图信息在大脑中形成的印象</p>
+</li>
+<li><p>图像:是图和像的结合。具体来说，就是用<strong>各种观测系统</strong>以不同形式和手段观测客观世界而获得的、可以直接或间接作用于人的视觉系统而产生的视知觉实体</p>
+</li>
+<li><p>图像处理：是对图形信息进行加工以满足人的视觉或应用需求的行为。处理的方法通常有：模拟图像处理、数字图像处理、光电结合处理。</p>
+<ul>
+<li>模拟图像处理：也称光学图像处理，它是利用光学透镜或光学照相(例如：胶片照相机)方法对模拟图像进行的处理，其实时性强、速度快、处理信息量大、分辨率高，但是处理精度差，难有判断功能</li>
+<li>数字图像处理：利用计算机技术或其他数字技术，对图像信息进行某些数字运算和各种加工处理，以改善图像的视觉效果和提高图像实用性的技术</li>
+<li>光电结合处理：用光学方法完成运算量巨大的处理(如频谱变换等)，再用计算机对光学处理结果(如频谱)进行分析判读等处理。该方法是前两种的有机结合，它集结了两者的优点</li>
+</ul>
+</li>
+<li><p>图像处理的基本特征：系统的输入和输出都是图像。核心是<strong>在不改变图像核心内容结构</strong>的前提下，改善图像质量或提取基础特征</p>
+</li>
+<li><p>计算机中图像的表示：定义为二维函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>,其中x，y是空间坐标，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>是点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>的幅值；灰度图像是一个二维灰度(或亮度)函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>;彩色图像由三个(如RGB，HSV)二维灰度(或亮度)函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>组成</p>
+</li>
+</ul>
+<p>数字图像由二维的元素组成，每一个元素具有一个特定的位置(x,y)和幅值<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>，这些元素称为像素</p>
+<ul>
+<li>计算机中的图像的构成：像素组成的二维排列，可以用矩阵表示；对于单色(灰度)图像而言，每个像素的亮度用一个数值来表示，通常数值范围在0到255之间，0表示黑、255表示白，其他值表示处于黑白之间的灰度；彩色图像可以用红、蓝、绿三元组矩阵来表示，通常，三元组的每一个数值也是在0到255之间，0表示相应的基色在该像素中没有，而255则代表相应的基色在该像素中取得最大值</li>
+</ul>
+<h3 id="图像的特点"><a href="#图像的特点" class="headerlink" title="图像的特点"></a>图像的特点</h3><p>直观形象、易懂、信息量大</p>
+<h3 id="图像的分类"><a href="#图像的分类" class="headerlink" title="图像的分类"></a>图像的分类</h3><p>按灰度分类：二值、多灰度<br>按色彩分类：单色、彩色<br>按运动分类：静态、动态<br>按时空分布分类：二维、三维</p>
+<h2 id="1-2-数字图像处理奇数与应用"><a href="#1-2-数字图像处理奇数与应用" class="headerlink" title="1.2 数字图像处理奇数与应用"></a>1.2 数字图像处理奇数与应用</h2><h3 id="数字图像处理的主要内容"><a href="#数字图像处理的主要内容" class="headerlink" title="数字图像处理的主要内容"></a>数字图像处理的主要内容</h3><ul>
+<li>图像获取：把一幅模拟图像转换成适合计算机或数字设备处理的数字信号。包括：摄取图像、光电转换、数字化。</li>
+<li>图像变换：对原始图像进行某种<strong>正交变换</strong>，将图像的特征在变换域中表现出来，一边对图像进行各种相关处理。</li>
+<li>图像增强：突出图像中感兴趣的信息，衰减或去除不需要的信息，以使图像更清晰地被显示后更适合于人或机器的处理与分析</li>
+<li>图像复原：去除噪声干扰和消除模糊，尽可能恢复图像的本来面目。</li>
+<li>图像编码：利用信息论的思想对图像信号进行高效压缩，从而减少数据存储量，降低数据率以减少传输带宽。</li>
+<li>图像分析：对图像中感兴趣的目标进行检测和测量，以获得所需的客观信息。</li>
+<li>图像识别：对图像加以处理和识别，以解决计算机与外部环境直接通信的问题。</li>
+<li>图像理解：研究图像中各种目标的性子以及相互之间的联系，并得以对图像内容含义的理解以及对原来客观场景的解释，从而知道规划行为。</li>
+</ul>
+<h3 id="数字图像处理的方法"><a href="#数字图像处理的方法" class="headerlink" title="数字图像处理的方法"></a>数字图像处理的方法</h3><ul>
+<li>空域法：把图像看作平面中各个像素组成的集合，直接对图像的像素进行处理；（又分为领域处理的方法、点处理的方法）</li>
+<li>变换域法：将图像进行变换后，在变换域内对图像的变换系数进行处理，处理完毕再进行逆变换，获得处理后的图像</li>
+</ul>
+<h3 id="数字图像处理技术的应用"><a href="#数字图像处理技术的应用" class="headerlink" title="数字图像处理技术的应用"></a>数字图像处理技术的应用</h3><ul>
+<li>计算机图像生成：核心是<strong>从无到有</strong>或<strong>基于需求创造图像</strong></li>
+<li>图像传输与图像通信，数字电视</li>
+<li>机器人视觉及图像测量</li>
+<li>办公自动化</li>
+<li>图像跟踪及光学制导</li>
+<li>医学图像处理与材料分析中的图像分析系统</li>
+<li>遥感图像处理和空间探测</li>
+<li>图像变形技术</li>
+</ul>
+<h2 id="1-3-数字图像处理系统"><a href="#1-3-数字图像处理系统" class="headerlink" title="1.3 数字图像处理系统"></a>1.3 数字图像处理系统</h2><h3 id="图像采集系统"><a href="#图像采集系统" class="headerlink" title="图像采集系统"></a>图像采集系统</h3><p>模拟图像-&gt;图像采集系统-&gt;计算机-&gt;图像输出设备</p>
+<h3 id="计算机"><a href="#计算机" class="headerlink" title="计算机"></a>计算机</h3><h3 id="图像输出设备"><a href="#图像输出设备" class="headerlink" title="图像输出设备"></a>图像输出设备</h3><h2 id="1-4MATLAB图像处理工具箱"><a href="#1-4MATLAB图像处理工具箱" class="headerlink" title="1.4MATLAB图像处理工具箱"></a>1.4MATLAB图像处理工具箱</h2><p>MATLAB是一种基于向量的高级程序语言，将计算、可视化与程序设计集成在一个易用的环境中</p>
+<p>。。。。。&#x2F;&#x2F;教授使用过程略</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io">JasmineRain</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">https://molly166.github.io/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://molly166.github.io/JasmineRain.github.io" target="_blank">JasmineRain's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/JasmineRain.github.io/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a></div><div class="post-share"><div class="social-share" data-image="/JasmineRain.github.io/img/head1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/JasmineRain.github.io/2025/09/10/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8ERedis/" title="一些关于Redis"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">一些关于Redis</div></div><div class="info-2"><div class="info-item-1">Redis简单介绍Redis是基于内存的高性能key-value存储(支持多种数据结构:string、Hash、List、Set、Sorted Set、Bitmap、HyperLogLog、Stream等) 内存读写极快，支持持久化(RDB&#x2F;AOF)、单线程处理命令(命令执行是原子性的)、支持复制、哨兵高可用和Cluster分片 常用场景:缓存、会话、限流、计数器、排行榜、消息队列、分布式锁等 持久化：RDB(快照):低开销，可能丢数据点(适合备份);AOF(命令追加):更耐久但文件更大、更慢些(可配置fsync策略) 内存管理&#x2F;驱逐策略：  maxmemory用来限制内存；当满时按maxmemory-policy决定如何驱逐:noeviction、allkeys-lru、volatile-lru、volatile-ttl、allkeys-random等，选allkeys-lru常用于缓存场景  原子性&#x2F;事务&#x2F;脚本:单命令原子:MULTI/EXEC是事务队列(不保证隔离);Lua脚本在Redis内部执行，整体原子且性能好(常用于实现安全释放...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">JasmineRain</div><div class="author-info-description">The raindrops dance on the eaves,while spring lies dormant on the flower-strewn steps.</div><div class="site-data"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Molly166"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Molly166" target="_blank" title="Github"><i class="fas fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://blog.csdn.net/Jimmdil?spm=1000.2115.3001.5343" target="_blank" title="CSDN"><i class="fas fa-CSDN" style="color: #24292e;"></i></a><a class="social-icon" href="/JasmineRain.github.io/tinaqihu1226@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/JasmineRain.github.io/2245717290" target="_blank" title="qq"><i class="fas qq" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E5%9B%BE%E5%83%8F%E5%8F%8A%E5%85%B6%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">1.1图像及其分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">图像的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">图像的分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%A5%87%E6%95%B0%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">1.2 数字图像处理奇数与应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9A%84%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.</span> <span class="toc-text">数字图像处理的主要内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">数字图像处理的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">数字图像处理技术的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">1.3 数字图像处理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.1.</span> <span class="toc-text">图像采集系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="toc-number">3.2.</span> <span class="toc-text">计算机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87"><span class="toc-number">3.3.</span> <span class="toc-text">图像输出设备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4MATLAB%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E7%AE%B1"><span class="toc-number">4.</span> <span class="toc-text">1.4MATLAB图像处理工具箱</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" title="数字图像处理">数字图像处理</a><time datetime="2025-09-11T02:02:33.000Z" title="发表于 2025-09-11 10:02:33">2025-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/09/10/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8ERedis/" title="一些关于Redis">一些关于Redis</a><time datetime="2025-09-10T04:32:54.000Z" title="发表于 2025-09-10 12:32:54">2025-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/09/09/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8EMySQL/" title="一些关于MySQL">一些关于MySQL</a><time datetime="2025-09-09T14:39:04.000Z" title="发表于 2025-09-09 22:39:04">2025-09-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/09/08/Gin-Echo/" title="Gin-Echo">Gin-Echo</a><time datetime="2025-09-08T14:38:27.000Z" title="发表于 2025-09-08 22:38:27">2025-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/09/08/Dijkstra%E7%AE%97%E6%B3%95/" title="Dijkstra算法">Dijkstra算法</a><time datetime="2025-09-08T10:23:36.000Z" title="发表于 2025-09-08 18:23:36">2025-09-08</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By JasmineRain</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/JasmineRain.github.io/js/utils.js"></script><script src="/JasmineRain.github.io/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/JasmineRain.github.io/js/search/local-search.js"></script></div></div></body></html>
