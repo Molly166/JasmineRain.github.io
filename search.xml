@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>数据库</title>
+      <link href="/JasmineRain.github.io/2025/09/12/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>/JasmineRain.github.io/2025/09/12/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="数据库概念"><a href="#数据库概念" class="headerlink" title="数据库概念"></a>数据库概念</h2><ul><li>数据库：有组织地存储数据的集合</li><li>数据库管理系统：用于创建、读取、更新、删除和管理数据库的软件(如MySQL、PostgreSQL、MongoDB、Redis、ClickHouse等)</li><li>两层关系：应用&lt;–&gt;DBMS&lt;–&gt;存储(磁盘&#x2F;SSD、缓存)</li></ul><h2 id="数据库分类与典型场景"><a href="#数据库分类与典型场景" class="headerlink" title="数据库分类与典型场景"></a>数据库分类与典型场景</h2><ul><li>关系型数据库：表、行、列、支持SQL、事务(ACID)。典型：MySQL、PostgreSQL、Oracle。适合OLTP(在线事务处理)</li><li>Key-Value存储:超快速读写，常做缓存&#x2F;会话(Redis、Memcached)</li><li>文档数据库:JSON&#x2F;BSON文档，灵活schema(MongoDB)。适合半结构化数据。</li><li>列式&#x2F;宽式数据库：面向大规模分析、列存储(Cassandra、HBase、ClickHouse)。适合OLAP&#x2F;时序&#x2F;日志分析</li><li>图数据库:关系密集型图查询(Neo4j、JanusGraph)</li><li>时序数据库:时间序列优化(InfluxDB、Prometheus TSDB)</li><li>搜索引擎:全文搜索与倒排索引(Elasticsearch、Solr)</li></ul><h2 id="核心概念与内部机制"><a href="#核心概念与内部机制" class="headerlink" title="核心概念与内部机制"></a>核心概念与内部机制</h2><ul><li>Schema&#x2F;Table&#x2F;Row&#x2F;Column&#x2F;Index&#x2F;View</li><li>主键PK&#x2F;外键FK&#x2F;唯一约束</li><li>事务(Transaction):原子性、一致性、隔离性、持久性——ACID</li><li>WAL(Write-Ahead Log):用于持久化与恢复</li><li>MVCC(多版本并发控制):实现高并发读(Postgres、InnoDB)</li><li>查询优化器&#x2F;施行计划(EXPLAIN):负责选择索引、join顺序、算子等</li><li>Buffer Pool&#x2F;Page Cache:内存缓存命中率影响性能</li></ul><h2 id="事务隔离级别与并发现象"><a href="#事务隔离级别与并发现象" class="headerlink" title="事务隔离级别与并发现象"></a>事务隔离级别与并发现象</h2><ul><li>隔离级别(按强到弱):<code>SERIALIZABLE</code>-&gt;<code>REPEATABLE READ</code>-&gt;<code>READ COMMITTED</code>-&gt;<code>READ UNCOMMITTED</code></li><li>并发异常:Dirty Read(脏读)、Non-repeatable Read(不可重读)-&gt;Phantom(幻读)</li><li>实务：多数OLTP用<code>READ COMMITTED</code>或<code>REPEATABLE READ</code>(MySQL默认是<code>REPEATABLE READ</code>),需要严格一致性时用<code>SERIALIZABLE</code>(代价高)</li></ul><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ul><li><p>类型：B-tree&#x2F;Hash&#x2F;Bitmap&#x2F;Inverted(全文)</p></li><li><p>选用要点:</p><ul><li>高选择性字段适合索引(能过滤大量行)</li><li>复合索引遵循最左前缀原则</li><li>覆盖索引(Index Only Scan)可以避免回表</li><li>索引会增加写入开销和占用磁盘空间</li></ul></li><li><p>常见命令</p></li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_user_email <span class="keyword">ON</span> users(email);</span><br><span class="line">EXPLAIN ANALYZE <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> email <span class="operator">=</span><span class="string">&#x27;a@b.com&#x27;</span>;</span><br></pre></td></tr></table></figure><h2 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h2><ul><li>范式化(1NF,2NF,3NF)：减少冗余、保证一致化，适用于事务系统</li><li>反范化&#x2F;物化视图&#x2F;预聚合：用于性能优化，适合读多写少或分析场景(如电商报表)</li><li>数据仓库建模：星型&#x2F;雪花模型(OLAP)</li></ul><h2 id="分区、分片与扩展策略"><a href="#分区、分片与扩展策略" class="headerlink" title="分区、分片与扩展策略"></a>分区、分片与扩展策略</h2><ul><li>垂直扩展：更强的单机(CPU&#x2F;内存&#x2F;SSD)</li><li>水平扩展：分片(sharding)&#x2F;分区，数据按键范围或哈希分布到多节点</li><li>分区(partition)：单库内按范围&#x2F;列表&#x2F;哈希分区，方便管理与查询优化</li><li>分片要谨慎：选择shard key(会影响热点与重分片成本)</li></ul><h2 id="复制与高可用"><a href="#复制与高可用" class="headerlink" title="复制与高可用"></a>复制与高可用</h2><ul><li>模式:主从(主写从读)、主主(双主)、基于一致性协议(Raft&#x2F;Paxos)</li><li>同步复制(强一致性) vs 异步复制(提升可用&#x2F;性能但有副本延迟)</li><li>常见功能：自动故障切换(failover)、复制延迟监控</li></ul><h2 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h2><ul><li>备份类型：逻辑备份(SQL dump)与物理备份&#x2F;快照(更快，可恢复到某一时点)</li><li>WAL+PITR(Point-in-time recovery)：可恢复到某个时间点</li><li>常见策略：定期全备+增量备份+异地存储+定期恢复演练</li></ul><h2 id="安全与权限"><a href="#安全与权限" class="headerlink" title="安全与权限"></a>安全与权限</h2><ul><li>最小权限原则(Role&#x2F;Grant)</li><li>加密：传输层TLS、静态数据加密(at-rest)</li><li>审计日志、敏感数据脱敏&#x2F;掩码、合规(GDPR&#x2F;HIPAA)考虑</li></ul><h2 id="监控指标与排查方向"><a href="#监控指标与排查方向" class="headerlink" title="监控指标与排查方向"></a>监控指标与排查方向</h2><ul><li>基础指标：QPS、响应时间(p95&#x2F;p99)、慢查询数、连续数、CPU、IOPS、磁盘使用、内存使用、缓存命中率、锁等待、复制延迟</li><li>工具：Prometheus+Grafana、各DB自带统计(pg_stat_statements、MySQL Performance Schema)</li></ul><h2 id="常见数据库与推荐场景"><a href="#常见数据库与推荐场景" class="headerlink" title="常见数据库与推荐场景"></a>常见数据库与推荐场景</h2><ul><li>MySQL&#x2F;PostgreSQL：通用OLTP；Postgres强SQL标准、扩展性好；MySQL社区与生态广</li><li>Redis：会话、缓存、队列(轻量)、限流</li><li>MongoDB：文档存储，schema灵活</li><li>Cassandra&#x2F;Scylla：写密集型、线性扩展，最终一致性</li><li>ClickHouse&#x2F;DWH:实时分析、列存储，超快聚合</li><li>Elasticsearch：全文检索与分析</li></ul><h2 id="实战常用SQL示例"><a href="#实战常用SQL示例" class="headerlink" title="实战常用SQL示例"></a>实战常用SQL示例</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--链表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> users(</span><br><span class="line">    id SERTAL <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    name TEXT <span class="keyword">NOT NULL</span>,</span><br><span class="line">    email TEXT <span class="keyword">UNIQUE</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">--事务</span></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> accounts <span class="keyword">SET</span> balance <span class="operator">=</span>balance <span class="operator">-</span> <span class="number">100</span> <span class="keyword">WHERE</span> id <span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> accounts <span class="keyword">SET</span> balance <span class="operator">=</span>balance <span class="operator">+</span> <span class="number">100</span> <span class="keyword">WHERE</span> id <span class="operator">=</span><span class="number">2</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查看执行计划(Postgres)</span></span><br><span class="line">EXPLAIN ANALYZE <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> email <span class="operator">=</span><span class="string">&#x27;a@b.com&#x27;</span>;</span><br></pre></td></tr></table></figure><p>NoSQL示例(MongoDB)</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">insertOne</span>(&#123;<span class="attr">name</span>:<span class="string">&quot;Alice&quot;</span>,<span class="attr">email</span>:<span class="string">&quot;a@b.com&quot;</span>&#125;);</span><br><span class="line">db.<span class="property">users</span>.<span class="title function_">createIndex</span>(&#123;<span class="attr">email</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">unique</span>:<span class="literal">true</span>&#125;);</span><br><span class="line">db.<span class="property">users</span>.<span class="title function_">find</span>(&#123;<span class="attr">name</span>:<span class="string">&quot;Alice&quot;</span>&#125;);</span><br></pre></td></tr></table></figure><p>Redis示例</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">session</span>:<span class="number">123</span> <span class="keyword">user</span>:<span class="number">1</span> EX <span class="number">3600</span></span><br><span class="line">HSET <span class="keyword">user</span>:<span class="number">1</span> <span class="type">name</span> &quot;Alice&quot; age &quot;30&quot;</span><br><span class="line"><span class="keyword">GET</span> <span class="keyword">session</span>:<span class="number">123</span></span><br></pre></td></tr></table></figure><h2 id="性能调优清单-Checklist"><a href="#性能调优清单-Checklist" class="headerlink" title="性能调优清单(Checklist)"></a>性能调优清单(Checklist)</h2><ul><li>检查慢查询并优化SQL&#x2F;加索引</li><li>合理设计索引，避免过多无用索引</li><li>设计连接池、Prepared Statements、批量写入</li><li>利用缓存(Redis)和读写分离</li><li>避免N+1查询、过度JOIN</li><li>对分析场景使用列式存储&#x2F;ETL到数据仓库</li><li>定期重建碎片化索引&#x2F;VACUUM(Postgres)</li></ul><h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ul><li>加索引并不都是好事，会增加开销与空间成本</li><li>分片不能无限扩容，分片设计复杂、跨分片join&#x2F;事务很难</li><li>主从复制也是有成本的，存在复制延迟、一致性问题</li></ul><h2 id="选型建议-简单决策树"><a href="#选型建议-简单决策树" class="headerlink" title="选型建议(简单决策树)"></a>选型建议(简单决策树)</h2><ul><li>需要强事务&amp;复杂查询-&gt;PostgreSQL&#x2F;MySQL</li><li>需要极低延迟缓存-&gt;Redis</li><li>文档型灵活schema-&gt;MongoDB</li><li>高并发写入、线性拓展-&gt;Cassandra&#x2F;Scylla</li><li>大数据分析&#x2F;实时OLAP-&gt;ClickHouse&#x2F;BigQuery&#x2F;Snowflake</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络基础</title>
+      <link href="/JasmineRain.github.io/2025/09/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+      <url>/JasmineRain.github.io/2025/09/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数字图像处理</title>
       <link href="/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
       <url>/JasmineRain.github.io/2025/09/11/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</url>
