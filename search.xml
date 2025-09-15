@@ -4,6 +4,50 @@
   
     
     <entry>
+      <title>HashMap是如何解决哈希冲突</title>
+      <link href="/JasmineRain.github.io/2025/09/15/HashMap%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/"/>
+      <url>/JasmineRain.github.io/2025/09/15/HashMap%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="哈希冲突"><a href="#哈希冲突" class="headerlink" title="哈希冲突"></a>哈希冲突</h2><p>HashMap是一种键值对的存储数据结构，通过哈希函数把key映射到数组下标(bucket),哈希冲突就是不同的key经过哈希函数后得到相同的数组下标，因为数组有限，而key无限，所以冲突是不可避免的</p><h2 id="HashMap常见的解决哈希冲突的方法"><a href="#HashMap常见的解决哈希冲突的方法" class="headerlink" title="HashMap常见的解决哈希冲突的方法"></a>HashMap常见的解决哈希冲突的方法</h2><h3 id="拉链法-Separate-chaining-链地址法"><a href="#拉链法-Separate-chaining-链地址法" class="headerlink" title="拉链法(Separate chaining&#x2F;链地址法)"></a>拉链法(Separate chaining&#x2F;链地址法)</h3><p>每个数组下标不直接存储单个元素，而是存储一个链表或链式结构，当key冲突时，放到这个链表中。</p><p>查找时，根据key的哈希值找到数组的下标，遍历链表，比较key是否相等</p><ul><li><p>优点</p><ul><li>简单易实现</li><li>当冲突少时，效率很高</li></ul></li><li><p>缺点</p><ul><li>链表过长时查找效率下降(后续Java8+用红黑树替换链表提升性能)</li></ul></li></ul><h3 id="地址开放法-Open-Addressing"><a href="#地址开放法-Open-Addressing" class="headerlink" title="地址开放法(Open Addressing)"></a>地址开放法(Open Addressing)</h3><p>所有元素都存储在数组中，没有链表。当冲突发生时，寻找数组中下一个空槽位存放元素。常用探查方式：线性探查(下一个空槽依次查找)、二次探查(查找间隔平方递增，减少群聚现象)、双哈希(用第二个哈希函数计算步长)</p><ul><li><p>优点</p><ul><li>节约内存，不需要链表指针</li></ul></li><li><p>缺点</p><ul><li>数组负载因子过高时，插入&#x2F;查找效率下降</li></ul></li></ul><h3 id="再哈希法"><a href="#再哈希法" class="headerlink" title="再哈希法"></a>再哈希法</h3><p>当哈希冲突严重时，通过扩容数组+重新计算哈希值，把元素分散到更大的数组里，Java中的HashMap在达到负载因子0.75时会自动扩容(容量翻倍),并将链表&#x2F;红黑树元素重新哈希到新数组</p><h2 id="Java中HashMap的冲突处理-核心机制"><a href="#Java中HashMap的冲突处理-核心机制" class="headerlink" title="Java中HashMap的冲突处理(核心机制)"></a>Java中HashMap的冲突处理(核心机制)</h2><h3 id="链表-红黑树"><a href="#链表-红黑树" class="headerlink" title="链表+红黑树"></a>链表+红黑树</h3><ul><li>Java8之前：链表存储冲突元素</li><li>Java8之后：当链表长度&gt;8且数组长度&gt;&#x3D;64-&gt;链表转换成红黑树，查找复杂度O(logn)</li></ul><h3 id="负载因子与扩容"><a href="#负载因子与扩容" class="headerlink" title="负载因子与扩容"></a>负载因子与扩容</h3><ul><li>默认负载因子0.75，超过就扩容并重新分布元素</li></ul><h3 id="哈希函数优化"><a href="#哈希函数优化" class="headerlink" title="哈希函数优化"></a>哈希函数优化</h3><ul><li>HashMap内部对key的hashCode做扰动处理，提高冲突分散性</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HashMap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>最优化理论与方法</title>
+      <link href="/JasmineRain.github.io/2025/09/12/%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/"/>
+      <url>/JasmineRain.github.io/2025/09/12/%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E4%B8%8E%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="线性规划与整数规划"><a href="#线性规划与整数规划" class="headerlink" title="线性规划与整数规划"></a>线性规划与整数规划</h2><h3 id="最优化基本要素"><a href="#最优化基本要素" class="headerlink" title="最优化基本要素"></a>最优化基本要素</h3><ol><li>将实际问题抽象地用数学模型来描述</li><li>对数学模型进行必要的简化，并采用适当的最优化方法来求解数学模型</li></ol><p>目标函数、优化变量、约束条件是最优化问题数学模型的三个基本要素</p><h4 id="优化变量"><a href="#优化变量" class="headerlink" title="优化变量"></a>优化变量</h4><p>一个实际的优化方案可以用一组参数来表示。在这些参数中，有些根据要求在优化过程中始终保持不变，这类参数为<strong>常量</strong>。另一些参数的取值则需要在优化过程中调优和优选，一直处于变化的状态，这类变量称为<strong>优化变量</strong>。优化变量必须是独立的参数。</p><h2 id="非线性规划"><a href="#非线性规划" class="headerlink" title="非线性规划"></a>非线性规划</h2><h2 id="智能优化方法"><a href="#智能优化方法" class="headerlink" title="智能优化方法"></a>智能优化方法</h2><h2 id="变分法与动态规划"><a href="#变分法与动态规划" class="headerlink" title="变分法与动态规划"></a>变分法与动态规划</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 专业选修课 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库</title>
       <link href="/JasmineRain.github.io/2025/09/12/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
       <url>/JasmineRain.github.io/2025/09/12/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
@@ -33,7 +77,7 @@
       <link href="/JasmineRain.github.io/2025/09/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
       <url>/JasmineRain.github.io/2025/09/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="概念与分层模型"><a href="#概念与分层模型" class="headerlink" title="概念与分层模型"></a>概念与分层模型</h2><h3 id="网络的概念"><a href="#网络的概念" class="headerlink" title="网络的概念"></a>网络的概念</h3><p>网络是现代软件系统的基础(分布式系统、微服务系统、云、流媒体、物联网都离不开它)</p><h3 id="两个常见的模型"><a href="#两个常见的模型" class="headerlink" title="两个常见的模型"></a>两个常见的模型</h3><ol><li><p><strong>OSI七层模型</strong>：(物理、数据链路、网络、传输、会话、表示、应用)，便于概念教学所以使用该分层</p></li><li><p><strong>TCP&#x2F;IP(四&#x2F;五层)模型</strong>：(链路&#x2F;网络接口、网络&#x2F;Internet、传输&#x2F;Host-to-Host、应用)，更贴近实际协议栈，(IP&#x2F;TCP&#x2F;UDP&#x2F;HTTP)</p></li></ol><blockquote><p>对照表：<br>1.物理层-&gt;网线&#x2F;光纤&#x2F;无线<br>2.数据链路层-&gt;Ethernet、MAC、ARP、交换机<br>3.网络层-&gt;IP(IPv4&#x2F;IPv6)、路由、ICMP<br>4.传输层-&gt;TCP&#x2F;UDP、端口、流控、拥塞控制<br>5.应用层-&gt;DNS、HTTP、TLS、SMTP、FTP、SSH</p></blockquote><h2 id="物理层与链路层-从线缆到帧"><a href="#物理层与链路层-从线缆到帧" class="headerlink" title="物理层与链路层(从线缆到帧)"></a>物理层与链路层(从线缆到帧)</h2><ul><li><p>物理层：介质(双绞线、光纤、同轴)、信号编码、带宽、噪声、衰减、抖动(jitter)</p></li><li><p>链路层(数据帧):</p><ul><li>MAC地址(48bit,厂商前缀+唯一接口ID)；交换机根据MAC转发</li><li>Ethernet帧结构：目的MAC、源MAC、类型&#x2F;长度、Payload、FCS(CRS)</li><li>ARP(地址解析协议)：把IPv4地址映射到MAC(ARP请求&#x2F;应答)；存在ARP欺骗风险</li><li>交换机vs集线器：集线器广播，交换机基于CAM表转发；交换机隔离碰撞域</li><li>VLAN(虚拟局域网):802.1Q标记帧，使同一物理交换机上存在多个逻辑网络</li><li>生成树协议(STP):防止交换网络环境</li></ul></li></ul><h2 id="网络层：IP、路由、子网"><a href="#网络层：IP、路由、子网" class="headerlink" title="网络层：IP、路由、子网"></a>网络层：IP、路由、子网</h2><ul><li><p>IP地址：</p><ul><li>IPv4(32位)，IPv6(64位)——IPv6没有广播，用邻居发现替代ARP</li><li></li></ul></li></ul>]]></content>
       
       
       <categories>
