@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>红黑树与AVL树的区别</title>
+      <link href="/JasmineRain.github.io/2025/09/15/%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8EAVL%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+      <url>/JasmineRain.github.io/2025/09/15/%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8EAVL%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><table><thead><tr><th></th><th>定义</th><th>平衡方法</th></tr></thead><tbody><tr><td>AVL树</td><td>一种严格自平衡二叉搜索树(BST)</td><td>节点的左右子树高度差&lt;&#x3D;1</td></tr><tr><td>红黑树</td><td>一种弱平衡的自平衡BST</td><td>节点染色(红&#x2F;黑)，保证从根到叶子每条路径黑色节点数量相同，并不严格要求高度差&lt;&#x3D;1</td></tr></tbody></table><h2 id="平衡策略"><a href="#平衡策略" class="headerlink" title="平衡策略"></a>平衡策略</h2><ul><li><p>AVL树</p><ul><li>高度严格平衡</li><li>插入&#x2F;删除节点后，如果高度差&gt;1，需要通过单旋转或双旋转来恢复平衡</li><li>优点：查找&#x2F;删除效率非常高，平均复杂度O(logn)</li></ul></li><li><p>红黑树</p><ul><li>高度弱平衡(通过颜色约束维持)</li><li>每条从根到叶子的路径黑色节点数相同(黑高相等)，并不能有两个连续红色节点</li><li>插入&#x2F;删除时通过变色+左右旋转调整</li><li>优点：插入&#x2F;删除效率较稳定，旋转次数少</li></ul></li></ul><h2 id="性能对比"><a href="#性能对比" class="headerlink" title="性能对比"></a>性能对比</h2><table><thead><tr><th>性能指标</th><th>AVL树</th><th>红黑树</th></tr></thead><tbody><tr><td>查找</td><td>高速，平均O(logn)，比红黑树略快</td><td>较快，O(logn)，查找略慢于AVL树</td></tr><tr><td>插入&#x2F;删除</td><td>平衡严格，旋转次数多-&gt;相对慢</td><td>平衡较松，旋转次数少-&gt;插入&#x2F;删除快</td></tr><tr><td>空间开销</td><td>每个节点存储高度信息</td><td>每个节点存储颜色信息(1 bit)</td></tr><tr><td>高度上界</td><td>≈1.44*<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">log_2(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></td><td>&lt;&#x3D;2*<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">log_2(n+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>-&gt;稍高一些</td></tr></tbody></table><h2 id="使用场景对比"><a href="#使用场景对比" class="headerlink" title="使用场景对比"></a>使用场景对比</h2><table><thead><tr><th>特点</th><th>AVL树适用</th><th>红黑树适用</th></tr></thead><tbody><tr><td>查找频率</td><td>数据查找频繁、少量更新</td><td>不适合更新频繁场景</td></tr><tr><td>更新频率</td><td>不适合，因为旋转多</td><td>更新频繁场景优选，如Java TreeMap、TreeSet</td></tr><tr><td>内存开销</td><td>略大(存高度信息)</td><td>略小(存颜色位)</td></tr><tr><td>实用性</td><td>学术研究居多</td><td>工业级应用广泛(Lunix内核，Java集合、C++STLmap&#x2F;set)</td></tr></tbody></table><blockquote><p>AVL树：严格平衡-&gt;查找快，更新慢<br>红黑树：弱平衡-&gt;查找稍慢，更新快-&gt;工业界应用更广泛</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 红黑树 </tag>
+            
+            <tag> AVL树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HashMap是如何解决哈希冲突</title>
       <link href="/JasmineRain.github.io/2025/09/15/HashMap%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/"/>
       <url>/JasmineRain.github.io/2025/09/15/HashMap%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</url>
