@@ -43,32 +43,17 @@
     const clearBtn = document.getElementById('clear-btn');
     const chatMessages = document.getElementById('chat-messages');
 
+    // Check if elements exist
+    if (!chatInput || !sendBtn || !clearBtn || !chatMessages) {
+      console.error('AI Assistant: Required elements not found');
+      return;
+    }
+
     // Load blog posts
     loadBlogPosts();
 
-    // Send message
-    sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
-
-    // Clear chat
-    clearBtn.addEventListener('click', function() {
-      if (confirm('确定要清空所有对话吗？')) {
-        chatMessages.innerHTML = `
-          <div class="message system-message">
-            <div class="message-content">
-              <p>👋 你好！我是 AI 助手，基于 DeepSeek 模型。我可以帮助你查找和介绍博客文章，回答技术问题等。请输入你的问题！</p>
-            </div>
-          </div>
-        `;
-      }
-    });
-
-    function sendMessage() {
+    // Send message function
+    const sendMessage = function() {
       const message = chatInput.value.trim();
       if (!message) return;
 
@@ -94,26 +79,45 @@
         })
         .catch(error => {
           removeLoadingMessage(loadingId);
-          addMessage('assistant', `❌ 错误: ${error.message}`);
+          console.error('AI Assistant Error:', error);
+          addMessage('assistant', `❌ 错误: ${error.message || '请求失败，请稍后重试'}`);
         })
         .finally(() => {
           sendBtn.disabled = false;
           chatInput.focus();
         });
-    }
+    };
 
-    function callDeepSeekAPI(apiKey, userMessage) {
+    // Send message event listeners
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Clear chat
+    clearBtn.addEventListener('click', function() {
+      if (confirm('确定要清空所有对话吗？')) {
+        chatMessages.innerHTML = `
+          <div class="message system-message">
+            <div class="message-content">
+              <p>👋 你好！我是 AI 助手，基于 DeepSeek 模型。我可以帮助你查找和介绍博客文章，回答技术问题等。请输入你的问题！</p>
+            </div>
+          </div>
+        `;
+      }
+    });
+
+    // Call DeepSeek API function
+    const callDeepSeekAPI = function(apiKey, userMessage) {
       // Get conversation history
       const messages = getConversationHistory();
       
       // Add system prompt with blog context
       const systemPrompt = buildSystemPrompt();
-      if (messages.length === 0) {
-        messages.push({
-          role: 'system',
-          content: systemPrompt
-        });
-      } else if (messages[0].role !== 'system') {
+      if (messages.length === 0 || !messages.some(m => m.role === 'system')) {
         messages.unshift({
           role: 'system',
           content: systemPrompt
@@ -125,6 +129,12 @@
         content: userMessage
       });
 
+      // Get model config from window.AI_CONFIG or use defaults
+      const config = window.AI_CONFIG || {};
+      const model = config.model || 'deepseek-chat';
+      const temperature = config.temperature || 0.7;
+      const maxTokens = config.max_tokens || 2000;
+
       return fetch(DEEPSEEK_API_URL, {
         method: 'POST',
         headers: {
@@ -132,50 +142,58 @@
           'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-          model: 'deepseek-chat',
+          model: model,
           messages: messages,
-          temperature: 0.7,
-          max_tokens: 2000,
+          temperature: temperature,
+          max_tokens: maxTokens,
           stream: false
         })
       })
       .then(response => {
         if (!response.ok) {
           return response.json().then(err => {
-            throw new Error(err.error?.message || `HTTP ${response.status}: ${response.statusText}`);
+            const errorMsg = err.error?.message || `HTTP ${response.status}: ${response.statusText}`;
+            throw new Error(errorMsg);
+          }).catch(() => {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
           });
         }
         return response.json();
       })
       .then(data => {
-        if (data.choices && data.choices.length > 0) {
+        if (data.choices && data.choices.length > 0 && data.choices[0].message) {
           return data.choices[0].message.content;
         } else {
           throw new Error('API 返回格式错误');
         }
       });
-    }
+    };
 
-    function getConversationHistory() {
+    // Get conversation history function
+    const getConversationHistory = function() {
       const messages = [];
       const messageElements = chatMessages.querySelectorAll('.message:not(.system-message)');
       
       messageElements.forEach(el => {
         const isUser = el.classList.contains('user-message');
-        const content = el.querySelector('.message-content').textContent.trim();
-        if (content && !content.includes('正在思考...')) {
-          messages.push({
-            role: isUser ? 'user' : 'assistant',
-            content: content
-          });
+        const contentEl = el.querySelector('.message-content');
+        if (contentEl) {
+          const content = contentEl.textContent.trim();
+          if (content && !content.includes('正在思考...') && !content.includes('loading')) {
+            messages.push({
+              role: isUser ? 'user' : 'assistant',
+              content: content
+            });
+          }
         }
       });
 
       // Keep last 10 messages for context
       return messages.slice(-10);
-    }
+    };
 
-    function buildSystemPrompt() {
+    // Build system prompt function
+    const buildSystemPrompt = function() {
       let prompt = `你是一个AI助手，专门帮助用户查询和了解这个技术博客的内容。
 
 博客信息：
@@ -206,21 +224,23 @@
       return prompt;
     }
 
-    function searchBlogPosts(query) {
+    // Search blog posts function
+    const searchBlogPosts = function(query) {
       if (!query || !blogPosts.length) return [];
       
       const lowerQuery = query.toLowerCase();
       return blogPosts.filter(post => {
-        const title = post.title.toLowerCase();
-        const description = post.description.toLowerCase();
-        const content = post.content.toLowerCase();
+        const title = (post.title || '').toLowerCase();
+        const description = (post.description || '').toLowerCase();
+        const content = (post.content || '').toLowerCase();
         return title.includes(lowerQuery) || 
                description.includes(lowerQuery) || 
                content.includes(lowerQuery);
       }).slice(0, 5);
-    }
+    };
 
-    function addMessage(role, content, isLoading = false) {
+    // Add message function
+    const addMessage = function(role, content, isLoading = false) {
       const messageDiv = document.createElement('div');
       messageDiv.className = `message ${role}-message`;
       if (isLoading) {
@@ -242,9 +262,10 @@
       return messageDiv.id || null;
     }
 
-    function formatMessage(content) {
+    // Format message function
+    const formatMessage = function(content) {
       // Basic markdown formatting
-      content = content
+      content = String(content || '')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/`(.*?)`/g, '<code>$1</code>')
@@ -252,16 +273,18 @@
         .replace(/\n/g, '<br>');
       
       return content;
-    }
+    };
 
-    function removeLoadingMessage(id) {
+    // Remove loading message function
+    const removeLoadingMessage = function(id) {
       const loadingMsg = document.getElementById('loading-message');
       if (loadingMsg) {
         loadingMsg.remove();
       }
-    }
+    };
 
-    function showMessage(text, type = 'info') {
+    // Show message function
+    const showMessage = function(text, type = 'info') {
       // Simple notification (you can enhance this)
       const notification = document.createElement('div');
       notification.style.cssText = `
