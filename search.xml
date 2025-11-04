@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>白盒测试</title>
+      <link href="/JasmineRain.github.io/2025/11/04/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/04/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<p>白盒测试，又称结构测试、逻辑驱动测试，是一种基于程序内部逻辑结构进行的测试方法。</p><p>了解程序的源代码、逻辑结构和实现细节，从而通过分析控制流、数据流等来设计测试比例，以验证程序的每个路径、语句和分支是否按预期工作。</p><p>白盒测试核心思想：站在程序内部的角度，检查代码结构的正确性与逻辑的完整性</p><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>验证程序内部的逻辑是否正确</p><p>发现程序内部潜在的逻辑错误或缺陷</p><p>确保程序的所有语句至少执行一次</p><h2 id="主要技术与类型"><a href="#主要技术与类型" class="headerlink" title="主要技术与类型"></a>主要技术与类型</h2><p>白盒测试的核心在于覆盖率分析。</p><ul><li>语句覆盖：程序中每条可执行语句至少执行一次</li><li>判定覆盖&#x2F;分支覆盖：每个判断的“真&#x2F;假”分支至少执行一次</li><li>条件覆盖：判断中的每个布尔表达式都取到真、假</li><li>判定-条件覆盖：同时满足判定覆盖与条件覆盖</li><li>条件组合覆盖：组合所有条件真&#x2F;假的所有情况</li><li>路径覆盖：程序中所有可能路径至少执行一次</li><li>数据流覆盖：检查变量的定义、使用与失效之间的路径</li></ul><h2 id="测试的常用方法"><a href="#测试的常用方法" class="headerlink" title="测试的常用方法"></a>测试的常用方法</h2><h2 id="控制流测试"><a href="#控制流测试" class="headerlink" title="控制流测试"></a>控制流测试</h2><p>通过分析程序的控制结构（顺序、选择、循环）建立<strong>控制流图（Control Flow Graph, CFG）</strong>，设计测试用例以覆盖所有语句、分支与路径。</p><p>常用技术包括：基本路径测试（Basis Path Testing）、环路测试（Loop Testing）</p><p>控制流图关键元素：节点（表示语句或代码块）、边（表示控制流的转移（执行路径））</p><p>可通过 <strong>圈复杂度（Cyclomatic Complexity）</strong> 计算最少测试路径</p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo><mo>=</mo><mi>E</mi><mo>−</mo><mi>N</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">V(G)=E-N+2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></span><p>其中，E 为边数，N 为节点数。</p><h2 id="数据流测试"><a href="#数据流测试" class="headerlink" title="数据流测试"></a>数据流测试</h2><p>侧重分析变量的定义（Definition）、引用（Use）和失效（Kill）关系，检查是否存在未定义即使用、定义后未使用等错误。</p><p>常见缺陷类型：使用未定义变量；定义但从未使用；使用后未释放资源；变量作用域混乱。</p><h2 id="循环测试"><a href="#循环测试" class="headerlink" title="循环测试"></a>循环测试</h2><p>专门针对程序中的循环结构进行测试。<br>基本策略包括：零次循环测试（跳过循环）；一次循环测试；多次循环测试（典型次数）；边界循环测试（最大次数或超过一次）。</p><p>例如：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;...&#125;</span><br></pre></td></tr></table></figure><p>测试时应考虑 n&#x3D;0, n&#x3D;1, n&#x3D;2, n&#x3D;边界值等情况。</p><h2 id="基本路径测试"><a href="#基本路径测试" class="headerlink" title="基本路径测试"></a>基本路径测试</h2><p>由 McCabe 提出，是控制流测试的一种。<br>主要步骤：画出程序的控制流图；计算圈复杂度 V(G)；确定独立路径集合；为每条独立路径设计测试用例。</p><p>示例：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &gt; <span class="number">0</span>)</span><br><span class="line">   x = x - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   x = x + <span class="number">1</span>;</span><br><span class="line"><span class="built_in">print</span>(x);</span><br></pre></td></tr></table></figure><p>独立路径有两条：</p><ol><li><p>x &gt; 0 的路径；</p></li><li><p>x &lt;&#x3D; 0 的路径。</p></li></ol><p>白盒测试的实施流程：阅读与理解源代码（掌握逻辑结构）-&gt;建立程序控制流图（CFG）-&gt;选择合适的覆盖标准（语句&#x2F;分支&#x2F;路径）-&gt;设计测试用例（输入集）-&gt;执行测试、记录结果-&gt;分析未覆盖的代码部分-&gt;修正缺陷与补充测试</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>能发现隐藏的逻辑错误、未执行代码、死循环等内部缺陷；测试覆盖率高，可度量测试充分性；可评估代码质量、复杂度、可靠性；可与持续集成结合实现自动化测试</p><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>需要掌握代码实现，成本较高；不适用于大型系统的整体测试；难以检测需求层面的缺陷；当代码变更频繁时维护成本高</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 白盒测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>马原期末复习要点</title>
       <link href="/JasmineRain.github.io/2025/11/04/%E9%A9%AC%E5%8E%9F%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E8%A6%81%E7%82%B9/"/>
       <url>/JasmineRain.github.io/2025/11/04/%E9%A9%AC%E5%8E%9F%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E8%A6%81%E7%82%B9/</url>
@@ -560,11 +585,11 @@
       
         <tags>
             
-            <tag> go </tag>
-            
             <tag> Dijkstra </tag>
             
             <tag> cpp </tag>
+            
+            <tag> go </tag>
             
         </tags>
       
