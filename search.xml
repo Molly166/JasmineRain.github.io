@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>SQL中属于分组查询的语句</title>
+      <link href="/JasmineRain.github.io/2025/11/05/SQL%E4%B8%AD%E5%B1%9E%E4%BA%8E%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%AF%AD%E5%8F%A5/"/>
+      <url>/JasmineRain.github.io/2025/11/05/SQL%E4%B8%AD%E5%B1%9E%E4%BA%8E%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%AF%AD%E5%8F%A5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ans"><a href="#ans" class="headerlink" title="ans"></a>ans</h2><p>在SQL中，属于分组查询的语句是<code>GROUP BY</code></p><p><code>GROUP BY</code>用于将查询结果按照一个或多个字段进行分组，常与聚合函数（如<code>COUNT()</code>、<code>SUM()</code>、<code>AVG()</code>、<code>MAX()</code>、<code>MIN()</code>）一起使用，用来对每个分组进行统计计算</p><h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列名，聚合函数(列名)</span><br><span class="line"><span class="keyword">FROM</span> 表名</span><br><span class="line"><span class="keyword">WHERE</span> 条件</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 列名；</span><br></pre></td></tr></table></figure><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>假设有一个表sales:</p><table><thead><tr><th>id</th><th>salesman</th><th>amount</th></tr></thead><tbody><tr><td>1</td><td>Alice</td><td>1000</td></tr><tr><td>2</td><td>Bob</td><td>1500</td></tr><tr><td>3</td><td>Alice</td><td>2000</td></tr><tr><td>4</td><td>Divid</td><td>1200</td></tr></tbody></table><p>查询每个销售员的总销量：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> salesman,<span class="built_in">SUM</span>(amount) <span class="keyword">AS</span> total_sales</span><br><span class="line"><span class="keyword">FROM</span> sales</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> salesman</span><br></pre></td></tr></table></figure><p>结果：</p><table><thead><tr><th>salesman</th><th>total_sales</th></tr></thead><tbody><tr><td>Alice</td><td>3000</td></tr><tr><td>Bob</td><td>1500</td></tr><tr><td>Divid</td><td>1200</td></tr></tbody></table><h2 id="相关查询"><a href="#相关查询" class="headerlink" title="相关查询"></a>相关查询</h2><ul><li>普通查询：SELECT，查询数据</li><li>条件查询：WHERE，设置筛选条件</li><li>排序查询：ORDER BY，对结果排序</li><li>分组筛选：HAVING，对分组结果再筛选</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>白盒测试</title>
       <link href="/JasmineRain.github.io/2025/11/04/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95/"/>
       <url>/JasmineRain.github.io/2025/11/04/%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95/</url>
