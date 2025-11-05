@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>突变测试</title>
+      <link href="/JasmineRain.github.io/2025/11/05/%E7%AA%81%E5%8F%98%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/05/%E7%AA%81%E5%8F%98%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<p>突变测试（Mutation Testing）是一种软件测试评估技术，用于检验测试用例的有效性和质量。</p><p>它通过对程序源代码进行微小的修改（突变），生成一些称为“突变体（Mutants）”的新程序，然后运行原有的测试用例集，看是否能检测到这些突变。</p><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>突变测试的基本假设是：<br>1.程序中存在的小的错误可能导致行为改变；<br>2.有效的测试应该能检测到这些错误。<br>如果测试用例不能区分原程序和突变程序（即测试都通过），说明测试集可能不够好。</p><h3 id="基本过程"><a href="#基本过程" class="headerlink" title="基本过程"></a>基本过程</h3><h4 id="生成突变体"><a href="#生成突变体" class="headerlink" title="生成突变体"></a>生成突变体</h4><p>在原始代码中，引入一个微小的语法变化（例如修改运算符、常量、条件表达式等），生成新的版本称为突变体。</p><h4 id="执行测试集"><a href="#执行测试集" class="headerlink" title="执行测试集"></a>执行测试集</h4><p>使用原有的测试用例对每个突变体进行测试。</p><h4 id="判断结果"><a href="#判断结果" class="headerlink" title="判断结果"></a>判断结果</h4><p>对每个测试体有三种情况：</p><ul><li>杀死：测试用例检测到行为不同，说明测试有效</li><li>幸存：测试未检测出差异，说明测试集不足</li><li>等价突变：逻辑改变但结果始终相同，不可检测（需人工分析）</li></ul><h4 id="计算突变得分"><a href="#计算突变得分" class="headerlink" title="计算突变得分"></a>计算突变得分</h4><p>衡量测试集质量的指标：</p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>M</mi><mi>u</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>S</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>=</mo><mfrac><mtext>被杀死的突变体数量</mtext><mrow><mtext>总突变体数量</mtext><mo>−</mo><mtext>等价突变体数量</mtext></mrow></mfrac><mo>∗</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">Mutation Score=\frac{被杀死的突变体数量}{总突变体数量-等价突变体数量}*100%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">core</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">总突变体数量</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord cjk_fallback">等价突变体数量</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">被杀死的突变体数量</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span></span><h3 id="突变测试优点"><a href="#突变测试优点" class="headerlink" title="突变测试优点"></a>突变测试优点</h3><p>可量化测试质量</p><p>提高测试集的有效性</p><p>较覆盖率更精细</p><h3 id="突变测试缺点"><a href="#突变测试缺点" class="headerlink" title="突变测试缺点"></a>突变测试缺点</h3><p>计算成本高</p><p>需要自动化工具</p><p>存在等价突变体问题</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 突变测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SQL中属于分组查询的语句</title>
       <link href="/JasmineRain.github.io/2025/11/05/SQL%E4%B8%AD%E5%B1%9E%E4%BA%8E%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%AF%AD%E5%8F%A5/"/>
       <url>/JasmineRain.github.io/2025/11/05/SQL%E4%B8%AD%E5%B1%9E%E4%BA%8E%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%AF%AD%E5%8F%A5/</url>
