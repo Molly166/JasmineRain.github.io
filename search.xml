@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JUnit</title>
+      <link href="/JasmineRain.github.io/2025/11/07/JUnit/"/>
+      <url>/JasmineRain.github.io/2025/11/07/JUnit/</url>
+      
+        <content type="html"><![CDATA[<p>JUnit是java语言中最常用的单元测试框架。</p><p>它用于自动化测试Java代码的逻辑正确性，可以快速定位程序错误，提高开发效率。</p><p>JUnit目前最常用的版本有：</p><ul><li>JUnit4：经典版本（基于注解）；</li><li>JUnit5（Jupiter）：最新框架，模块化设计，更强大的扩展能力。</li></ul><h2 id="JUnit的主要作用"><a href="#JUnit的主要作用" class="headerlink" title="JUnit的主要作用"></a>JUnit的主要作用</h2><ul><li>验证程序功能是否正确：自动执行测试方法，检查输出是否符合预期。</li><li>避免回归错误：当代码修改后，可通过测试快速发现是否破坏了原有功能。</li><li>促进模块化开发：鼓励“先写测试，再写实现”</li><li>提高开发与维护效率：自动化执行所有测试，提高系统稳定性。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JUnit </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>突变测试</title>
       <link href="/JasmineRain.github.io/2025/11/05/%E7%AA%81%E5%8F%98%E6%B5%8B%E8%AF%95/"/>
       <url>/JasmineRain.github.io/2025/11/05/%E7%AA%81%E5%8F%98%E6%B5%8B%E8%AF%95/</url>
