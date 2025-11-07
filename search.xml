@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Mock对象</title>
+      <link href="/JasmineRain.github.io/2025/11/07/Mock%E5%AF%B9%E8%B1%A1/"/>
+      <url>/JasmineRain.github.io/2025/11/07/Mock%E5%AF%B9%E8%B1%A1/</url>
+      
+        <content type="html"><![CDATA[<p>Mock 对象（模拟对象） 是在单元测试中用于模拟真实依赖对象行为的一种测试技术。</p><p>在编写单元测试时，一个类往往依赖其他组件（如数据库、网络请求、外部接口等）。</p><p>这些外部依赖难以控制、耗时、或在测试阶段尚未实现。</p><p>这时我们就用 Mock 对象来替代真实依赖，用虚拟对象“假装”执行并返回期望结果。</p><h2 id="为何使用Mock对象"><a href="#为何使用Mock对象" class="headerlink" title="为何使用Mock对象"></a>为何使用Mock对象</h2><ul><li>依赖未实现（接口、模块还没写好）——使用 Mock 模拟接口返回</li><li>调用外部服务成本高（如数据库、API）——用 Mock 模拟返回值而不真实连接</li><li>测试目标类与外部系统强耦合——用 Mock 隔离依赖，专注测试目标逻辑</li><li>难以触发某些异常场景——Mock 可轻松模拟错误返回、异常抛出</li></ul><p>目的：<strong>让单元测试只测试目标类逻辑，不依赖外部环境。</strong></p><h2 id="Mock框架常用工具"><a href="#Mock框架常用工具" class="headerlink" title="Mock框架常用工具"></a>Mock框架常用工具</h2><p>Mockito:简单易用、支持链式调用、广泛兼容 JUnit。常用Mockito+JUnit5.</p><p>EasyMock</p><p>PowerMock：可 Mock 静态方法、final 类、私有方法（配合 Mockito 使用）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mock对象 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JUnit</title>
       <link href="/JasmineRain.github.io/2025/11/07/JUnit/"/>
       <url>/JasmineRain.github.io/2025/11/07/JUnit/</url>
