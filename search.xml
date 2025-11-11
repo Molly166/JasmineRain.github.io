@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>冒烟测试</title>
+      <link href="/JasmineRain.github.io/2025/11/11/%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/11/%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>冒烟测试是一种常见的初步测试方式。</p><p>冒烟测试(Smoke Testing)是指在新版本软件构建完成后，对系统的<strong>主要功能进行快速验证</strong>，以确认系统是否能“正常启动”和“基本可用”。</p><p>(就像点燃一台新机器，看它会不会冒烟。若一开机就冒烟（崩溃&#x2F;无法运行），那后续的详细测试就没必要做了。)</p><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>验证软件的基本功能是否可运行；</p><p>判断新版本是否稳定到可以进入系统测试阶段；</p><p>快速发现严重问题（如系统无法启动、核心功能失效）。</p><h2 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h2><p>冒烟测试通常在：</p><pre><code>1.每次代码集成/构建之后；2.回归测试前；3.版本发布前；    由开发或测试工程师执行。</code></pre><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><table><thead><tr><th>特点</th><th>说明</th></tr></thead><tbody><tr><td>测试范围</td><td>小（核心功能）</td></tr><tr><td>测试深度</td><td>浅（只验证能否用）</td></tr><tr><td>执行频率</td><td>高（每次构建后）</td></tr><tr><td>目的</td><td>快速判断系统是否可测</td></tr><tr><td>责任人</td><td>通常由开发或测试人员执行</td></tr></tbody></table><blockquote><p>冒烟测试是上线前的体检；回归测试是修复后的复查。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 冒烟测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mock对象</title>
       <link href="/JasmineRain.github.io/2025/11/07/Mock%E5%AF%B9%E8%B1%A1/"/>
       <url>/JasmineRain.github.io/2025/11/07/Mock%E5%AF%B9%E8%B1%A1/</url>
@@ -433,9 +458,9 @@
             
             <tag> go </tag>
             
-            <tag> sort </tag>
-            
             <tag> c++ </tag>
+            
+            <tag> sort </tag>
             
             <tag> java </tag>
             
