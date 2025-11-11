@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>健全性测试</title>
+      <link href="/JasmineRain.github.io/2025/11/11/%E5%81%A5%E5%85%A8%E6%80%A7%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/11/%E5%81%A5%E5%85%A8%E6%80%A7%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>“健全性测试”（Sanity Testing）是一种软件测试类型，属于回归测试（Regression Testing）的子集，用于在对软件做出小范围修改或修复缺陷后，快速验证关键功能是否仍能正常工作。</p><p>健全性测试是指在软件新版本发布或修改后，检查关键模块是否“健全”（即是否仍然可用、逻辑未被破坏）。</p><p>其核心思想是：“不用全面测，只测关键改动相关的核心功能，确认系统基本可用。”</p><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><ol><li><p>验证 bug 修复是否成功；</p></li><li><p>验证修改是否未引入新的严重问题；</p></li><li><p>决定是否需要进行更全面的回归测试。</p></li></ol><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>测试范围</td><td>小，主要针对改动处或相关功能</td></tr><tr><td>执行时间</td><td>短，几分钟到几小时</td></tr><tr><td>测试深度</td><td>浅，不做全面验证</td></tr><tr><td>触发时机</td><td>修复缺陷或版本轻微更新后</td></tr><tr><td>执行者</td><td>通常由测试人员或开发人员快速执行</td></tr></tbody></table><h2 id="与其他测试的对比"><a href="#与其他测试的对比" class="headerlink" title="与其他测试的对比"></a>与其他测试的对比</h2><table><thead><tr><th>类型</th><th>目标</th><th>范围</th><th>时间</th></tr></thead><tbody><tr><td>冒烟测试（Smoke Testing）</td><td>确认系统是否能启动、主要功能是否可运行</td><td>宽但浅</td><td>每次构建后</td></tr><tr><td>健全性测试（Sanity Testing）</td><td>验证修复或小改动是否未破坏核心逻辑</td><td>窄但针对性强</td><td>修复或补丁后</td></tr><tr><td>回归测试（Regression Testing）</td><td>验证修改是否影响整个系统</td><td>广泛</td><td>每次更新后</td></tr></tbody></table><blockquote><p>如果你修了一个登录 bug，健全性测试就只验证“登录是否可用、注册和退出是否受影响”；不会去测购物车、支付、搜索等其他模块。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 健全性测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>冒烟测试</title>
       <link href="/JasmineRain.github.io/2025/11/11/%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95/"/>
       <url>/JasmineRain.github.io/2025/11/11/%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95/</url>
