@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>心跳检测</title>
+      <link href="/JasmineRain.github.io/2025/11/16/%E5%BF%83%E8%B7%B3%E6%A3%80%E6%B5%8B/"/>
+      <url>/JasmineRain.github.io/2025/11/16/%E5%BF%83%E8%B7%B3%E6%A3%80%E6%B5%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>心跳检测</strong>(Heartbeat)就是客户端定期给服务器发一个“我还活着”的小包（通常无业务意义）。</p><p>目的：检测客户端是否掉线;保持 NAT &#x2F; 防火墙映射不过期（重要）;让服务端维护在线状态、回收资源</p><h2 id="心跳检测的模式"><a href="#心跳检测的模式" class="headerlink" title="心跳检测的模式"></a>心跳检测的模式</h2><h3 id="模式A：客户端主动发送-→-服务端被动检测（常用）"><a href="#模式A：客户端主动发送-→-服务端被动检测（常用）" class="headerlink" title="模式A：客户端主动发送 → 服务端被动检测（常用）"></a>模式A：客户端主动发送 → 服务端被动检测（常用）</h3><p>客户端每隔 N 秒 发送一个 ping<br>服务端收到后更新“最后活跃时间 last_active”</p><blockquote><p>优点：简单稳定<br>缺点：服务器压力稍大（要记录时间）</p></blockquote><h3 id="模式-B：服务端主动发-→-客户端回-pong（WebSocket-常用）"><a href="#模式-B：服务端主动发-→-客户端回-pong（WebSocket-常用）" class="headerlink" title="模式 B：服务端主动发 → 客户端回 pong（WebSocket 常用）"></a>模式 B：服务端主动发 → 客户端回 pong（WebSocket 常用）</h3><p>Server: ping<br>Client: pong（自动回复）</p><blockquote><p>优点：服务端主动性强，适合 WebSocket<br>缺点：需要维护 ping loop</p></blockquote><h2 id="心跳机制的核心思想"><a href="#心跳机制的核心思想" class="headerlink" title="心跳机制的核心思想"></a>心跳机制的核心思想</h2><p>服务器维护每个连接的两个字段：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conn.last_active   <span class="comment">// 最近一次接收消息或心跳的时间戳</span></span><br><span class="line">conn.timeout       <span class="comment">// 超时时间，例如 60s</span></span><br></pre></td></tr></table></figure><p>每隔一段时间（例如 10 秒），服务器进行一次检查：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> now - conn.last_active &gt; <span class="built_in">timeout</span>:</span><br><span class="line">    close(conn)</span><br></pre></td></tr></table></figure><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="心跳不能太短-会炸服务器"><a href="#心跳不能太短-会炸服务器" class="headerlink" title="心跳不能太短(会炸服务器)"></a>心跳不能太短(会炸服务器)</h3><p>推荐值：WebSocket：20～40s；移动网络：30～60s；IoT：60～300s</p><p>太短会导致：CPU 天量 syscalls；网络风暴；电量快速下降（手机）</p><h3 id="NAT超时问题-非常关键"><a href="#NAT超时问题-非常关键" class="headerlink" title="NAT超时问题(非常关键)"></a>NAT超时问题(非常关键)</h3><p>移动网络&#x2F;路由器会在几分钟后关掉一个空闲 TCP，所以心跳保持连接是必须的。</p><h3 id="和业务包一起更新-last-active"><a href="#和业务包一起更新-last-active" class="headerlink" title="和业务包一起更新 last_active"></a>和业务包一起更新 last_active</h3><p>不是只有心跳才能更新活跃时间！</p><h3 id="心跳包必须轻量（不要带大数据）"><a href="#心跳包必须轻量（不要带大数据）" class="headerlink" title="心跳包必须轻量（不要带大数据）"></a>心跳包必须轻量（不要带大数据）</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">PING</span></span><br><span class="line">PONG</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure><h2 id="高性能时间轮"><a href="#高性能时间轮" class="headerlink" title="高性能时间轮"></a>高性能时间轮</h2><p>处理百万连接时，不能对每个连接每秒循环检查。</p><p>解决方案：<br>使用时间轮（Time Wheel） O(1) 复杂度<br>Netty、ClickHouse、Kafka 都在用。</p><p>作用：每个连接插入到对应的时间槽；每秒只检查当前槽位的连接；不用遍历全部连接</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 心跳检测 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TCP的三次握手和四次挥手</title>
       <link href="/JasmineRain.github.io/2025/11/16/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
       <url>/JasmineRain.github.io/2025/11/16/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</url>
