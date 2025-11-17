@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>契约测试 | JasmineRain's blog</title><meta name="author" content="JasmineRain"><meta name="copyright" content="JasmineRain"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="定义契约测试（Contract Testing）是一种用于微服务或前后端分离系统中的测试方式，主要目的是确保服务提供方（Provider）和服务调用方（Consumer）之间的接口“契约”始终保持一致、不会被意外破坏。 Consumer 定义“我需要什么样的 API”，Provider 承诺“我提供的 API 符合你的要求”，并通过测试自动验证双方是否匹配。 契约测试就是为了解决接口不一致、沟通不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="契约测试">
+<meta property="og:url" content="https://molly166.github.io/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="JasmineRain&#39;s blog">
+<meta property="og:description" content="定义契约测试（Contract Testing）是一种用于微服务或前后端分离系统中的测试方式，主要目的是确保服务提供方（Provider）和服务调用方（Consumer）之间的接口“契约”始终保持一致、不会被意外破坏。 Consumer 定义“我需要什么样的 API”，Provider 承诺“我提供的 API 符合你的要求”，并通过测试自动验证双方是否匹配。 契约测试就是为了解决接口不一致、沟通不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png">
+<meta property="article:published_time" content="2025-11-17T11:48:03.000Z">
+<meta property="article:modified_time" content="2025-11-17T11:52:23.925Z">
+<meta property="article:author" content="JasmineRain">
+<meta property="article:tag" content="契约测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "契约测试",
+  "url": "https://molly166.github.io/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/",
+  "image": "https://molly166.github.io/JasmineRain.github.io/img/head1.png",
+  "datePublished": "2025-11-17T11:48:03.000Z",
+  "dateModified": "2025-11-17T11:52:23.925Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "JasmineRain",
+      "url": "https://molly166.github.io/JasmineRain.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/JasmineRain.github.io/img/favicon.png"><link rel="canonical" href="https://molly166.github.io/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/JasmineRain.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/JasmineRain.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/JasmineRain.github.io/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '契约测试',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/JasmineRain.github.io/img/background2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-color: rgba(0,0,0,0);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/JasmineRain.github.io/"><span class="site-name">JasmineRain's blog</span></a><a class="nav-page-title" href="/JasmineRain.github.io/"><span class="site-name">契约测试</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">契约测试</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-17T11:48:03.000Z" title="发表于 2025-11-17 19:48:03">2025-11-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-17T11:52:23.925Z" title="更新于 2025-11-17 19:52:23">2025-11-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/JasmineRain.github.io/categories/%E6%B5%8B%E8%AF%95/">测试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">259</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>契约测试（Contract Testing）是一种用于微服务或前后端分离系统中的测试方式，主要目的是确保服务提供方（Provider）和服务调用方（Consumer）之间的接口“契约”始终保持一致、不会被意外破坏。</p>
+<p>Consumer 定义“我需要什么样的 API”，Provider 承诺“我提供的 API 符合你的要求”，并通过测试自动验证双方是否匹配。</p>
+<p>契约测试就是为了解决接口不一致、沟通不清导致的问题。</p>
+<h2 id="how"><a href="#how" class="headerlink" title="how"></a>how</h2><h3 id="Consumer-Contract-消费者契约"><a href="#Consumer-Contract-消费者契约" class="headerlink" title="Consumer Contract(消费者契约)"></a>Consumer Contract(消费者契约)</h3><p>由消费者写下“我调用这个 API 时，我需要的数据结构是什么”。</p>
+<h3 id="Provider-Verification-服务提供方验证"><a href="#Provider-Verification-服务提供方验证" class="headerlink" title="Provider Verification(服务提供方验证)"></a>Provider Verification(服务提供方验证)</h3><p>Provider 必须验证自己返回的数据结构与消费者要求一致。如果不一致，则无法上线，防止破坏接口。</p>
+<h2 id="常用tools"><a href="#常用tools" class="headerlink" title="常用tools"></a>常用tools</h2><p>Pact（最流行）</p>
+<p>Spring Cloud Contract（Java&#x2F;微服务中常用）</p>
+<p>Hoverfly（API 模拟）</p>
+<p>契约测试的特殊点是 双方共同维护，不需要全部服务都跑起来。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io">JasmineRain</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/">https://molly166.github.io/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://molly166.github.io/JasmineRain.github.io" target="_blank">JasmineRain's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/JasmineRain.github.io/tags/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/">契约测试</a></div><div class="post-share"><div class="social-share" data-image="/JasmineRain.github.io/img/head1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/JasmineRain.github.io/2025/11/17/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93/" title="常用测试工具总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">常用测试工具总结</div></div><div class="info-2"><div class="info-item-1">单元测试(Unit Test)工具JUnit最主流的Java单元测试框架 TestNG类似于JUnit，但功能更强(分组、依赖) Google Test(gtest)C++最常用的单元测试框架 pytest最强python测试框架 Mocha&#x2F;Jest前端单元测试最常用工具 Go testing pkgGo自带的单元测试框架 接口&#x2F;API测试工具PostmanAPI调试&#x2F;测试，最常用，请求构造、环境变量、脚本测试 JMeter可做接口测试+压力测试，企业常用 SoapUI支持SOAP&#x2F;REST API，适合老项目 Insomnia类似于Postman，界面更精简 HoppscotchWeb工具，在线API测试，轻量化 自动化测试(UI测试)工具SeleniumWeb，最经典Web UI自动化框架 PlaywrightWeb，新一代自动化测试，更快、更稳定 CypressWeb，前端使用，简单、直观 Appium移动端，Android&#x2F;IOS自动化测试框架 Robot Framework通用，基于关键字的自动化测试框架 性能测试&#...</div></div></div></a><a class="pagination-related" href="/JasmineRain.github.io/2025/11/17/Fake/" title="Fake"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Fake</div></div><div class="info-2"><div class="info-item-1">定义Fake（伪对象） 在软件测试、尤其是单元测试和测试开发中，是一种常见的 Test Double（测试替身）。 Fake 是一种 “带有简化实现的替代对象”，它能部分模拟真实对象的行为，但不完全等价。 它通常 有实际逻辑、能跑起来，但只是 简化版 &#x2F; 非生产级。 假设业务真正使用：MySQL 数据库、Redis 缓存、文件存储系统 这些在单元测试中启动非常慢，也很重。 于是你可以构造 Fake：FakeDB（伪数据库）：用 内存 map 存储数据，不用启动真正的 MySQL；提供 find&#x2F;add&#x2F;update 接口；测试环境可运行、速度快。FakeCache（伪缓存）：用 map 代替 Redis；实现 get&#x2F;set 逻辑 它们可以运行，但不能用于生产，只适合测试。 样例1234567891011121314151617181920212223242526272829303132type User struct &#123;    ID   int    Name string&#125;type UserRepo interfac...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">JasmineRain</div><div class="author-info-description">Better Call JasmineRain</div><div class="site-data"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Molly166"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#how"><span class="toc-number">2.</span> <span class="toc-text">how</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Consumer-Contract-%E6%B6%88%E8%B4%B9%E8%80%85%E5%A5%91%E7%BA%A6"><span class="toc-number">2.1.</span> <span class="toc-text">Consumer Contract(消费者契约)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Provider-Verification-%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E6%96%B9%E9%AA%8C%E8%AF%81"><span class="toc-number">2.2.</span> <span class="toc-text">Provider Verification(服务提供方验证)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8tools"><span class="toc-number">3.</span> <span class="toc-text">常用tools</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/11/17/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93/" title="常用测试工具总结">常用测试工具总结</a><time datetime="2025-11-17T11:57:45.000Z" title="发表于 2025-11-17 19:57:45">2025-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/" title="契约测试">契约测试</a><time datetime="2025-11-17T11:48:03.000Z" title="发表于 2025-11-17 19:48:03">2025-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/11/17/Fake/" title="Fake">Fake</a><time datetime="2025-11-17T08:14:45.000Z" title="发表于 2025-11-17 16:14:45">2025-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/11/17/Stub/" title="Stub">Stub</a><time datetime="2025-11-17T07:58:52.000Z" title="发表于 2025-11-17 15:58:52">2025-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/11/17/Dummy%E5%AF%B9%E8%B1%A1/" title="Dummy对象">Dummy对象</a><time datetime="2025-11-17T07:53:22.000Z" title="发表于 2025-11-17 15:53:22">2025-11-17</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By JasmineRain</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/JasmineRain.github.io/js/utils.js"></script><script src="/JasmineRain.github.io/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"placeholder":"欢迎留言！","requiredFields":["nick","mail"],"enableQQ":true,"meta":["nick","mail"],"pageSize":10}
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'VSEu2s9KNnp8cJTI2HEQNNck-gzGzoHsz',
+      appKey: 'F2i7X1gDtfVEnPEwTOXFy86x',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/JasmineRain.github.io/js/search/local-search.js"></script></div></div></body></html>

@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>常用测试工具总结</title>
+      <link href="/JasmineRain.github.io/2025/11/17/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93/"/>
+      <url>/JasmineRain.github.io/2025/11/17/%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="单元测试-Unit-Test-工具"><a href="#单元测试-Unit-Test-工具" class="headerlink" title="单元测试(Unit Test)工具"></a>单元测试(Unit Test)工具</h2><h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><p>最主流的Java单元测试框架</p><h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><p>类似于JUnit，但功能更强(分组、依赖)</p><h3 id="Google-Test-gtest"><a href="#Google-Test-gtest" class="headerlink" title="Google Test(gtest)"></a>Google Test(gtest)</h3><p>C++最常用的单元测试框架</p><h3 id="pytest"><a href="#pytest" class="headerlink" title="pytest"></a>pytest</h3><p>最强python测试框架</p><h3 id="Mocha-Jest"><a href="#Mocha-Jest" class="headerlink" title="Mocha&#x2F;Jest"></a>Mocha&#x2F;Jest</h3><p>前端单元测试最常用工具</p><h3 id="Go-testing-pkg"><a href="#Go-testing-pkg" class="headerlink" title="Go testing pkg"></a>Go testing pkg</h3><p>Go自带的单元测试框架</p><h2 id="接口-API测试工具"><a href="#接口-API测试工具" class="headerlink" title="接口&#x2F;API测试工具"></a>接口&#x2F;API测试工具</h2><h3 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h3><p>API调试&#x2F;测试，最常用，请求构造、环境变量、脚本测试</p><h3 id="JMeter"><a href="#JMeter" class="headerlink" title="JMeter"></a>JMeter</h3><p>可做接口测试+压力测试，企业常用</p><h3 id="SoapUI"><a href="#SoapUI" class="headerlink" title="SoapUI"></a>SoapUI</h3><p>支持SOAP&#x2F;REST API，适合老项目</p><h3 id="Insomnia"><a href="#Insomnia" class="headerlink" title="Insomnia"></a>Insomnia</h3><p>类似于Postman，界面更精简</p><h3 id="Hoppscotch"><a href="#Hoppscotch" class="headerlink" title="Hoppscotch"></a>Hoppscotch</h3><p>Web工具，在线API测试，轻量化</p><h2 id="自动化测试-UI测试-工具"><a href="#自动化测试-UI测试-工具" class="headerlink" title="自动化测试(UI测试)工具"></a>自动化测试(UI测试)工具</h2><h3 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h3><p>Web，最经典Web UI自动化框架</p><h3 id="Playwright"><a href="#Playwright" class="headerlink" title="Playwright"></a>Playwright</h3><p>Web，新一代自动化测试，更快、更稳定</p><h3 id="Cypress"><a href="#Cypress" class="headerlink" title="Cypress"></a>Cypress</h3><p>Web，前端使用，简单、直观</p><h3 id="Appium"><a href="#Appium" class="headerlink" title="Appium"></a>Appium</h3><p>移动端，Android&#x2F;IOS自动化测试框架</p><h3 id="Robot-Framework"><a href="#Robot-Framework" class="headerlink" title="Robot Framework"></a>Robot Framework</h3><p>通用，基于关键字的自动化测试框架</p><h2 id="性能测试-压力测试工具"><a href="#性能测试-压力测试工具" class="headerlink" title="性能测试&#x2F;压力测试工具"></a>性能测试&#x2F;压力测试工具</h2><h3 id="Locust"><a href="#Locust" class="headerlink" title="Locust"></a>Locust</h3><p>Python编写压测脚本，灵活度大</p><h3 id="k6"><a href="#k6" class="headerlink" title="k6"></a>k6</h3><p>Go写的性能测试工具，脚本用JS编写，轻量高性能</p><h3 id="wrk-wrk2"><a href="#wrk-wrk2" class="headerlink" title="wrk&#x2F;wrk2"></a>wrk&#x2F;wrk2</h3><p>超高性能HTTP压测工具</p><h3 id="Gatling"><a href="#Gatling" class="headerlink" title="Gatling"></a>Gatling</h3><p>Scala&#x2F;Java的高并发压力测试工具</p><h2 id="持续集成-CI-CD-工具"><a href="#持续集成-CI-CD-工具" class="headerlink" title="持续集成(CI&#x2F;CD)工具"></a>持续集成(CI&#x2F;CD)工具</h2><h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>最流行，强大但需要维护</p><h3 id="Github-Actions"><a href="#Github-Actions" class="headerlink" title="Github Actions"></a>Github Actions</h3><p>Github项目推荐，易用</p><h3 id="GitLab-CI"><a href="#GitLab-CI" class="headerlink" title="GitLab CI"></a>GitLab CI</h3><p>与GitLab集成，非常方便</p><h3 id="CircleCI"><a href="#CircleCI" class="headerlink" title="CircleCI"></a>CircleCI</h3><p>云端CI工具，上手简单</p><h3 id="Azure-DevOps-Pipelines"><a href="#Azure-DevOps-Pipelines" class="headerlink" title="Azure DevOps Pipelines"></a>Azure DevOps Pipelines</h3><p>微软系统项目使用多</p><h2 id="安全测试工具"><a href="#安全测试工具" class="headerlink" title="安全测试工具"></a>安全测试工具</h2><h3 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h3><p>Web安全测试神器</p><h3 id="OWASP-ZAP"><a href="#OWASP-ZAP" class="headerlink" title="OWASP ZAP"></a>OWASP ZAP</h3><p>开源Web渗透测试工具</p><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><p>网络扫描、安全探测</p><h3 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h3><p>渗透攻击测试框架</p><h3 id="Nikto"><a href="#Nikto" class="headerlink" title="Nikto"></a>Nikto</h3><p>Web漏洞扫描</p><h2 id="契约测试工具-Contract-Testing"><a href="#契约测试工具-Contract-Testing" class="headerlink" title="契约测试工具(Contract Testing)"></a>契约测试工具(Contract Testing)</h2><h3 id="Pact"><a href="#Pact" class="headerlink" title="Pact"></a>Pact</h3><p>最主流契约测试，前后端&#x2F;微服务用</p><h3 id="Spring-Cloud-Contract"><a href="#Spring-Cloud-Contract" class="headerlink" title="Spring Cloud Contract"></a>Spring Cloud Contract</h3><p>Java微服务中常用</p><h3 id="Hoverfly"><a href="#Hoverfly" class="headerlink" title="Hoverfly"></a>Hoverfly</h3><p>API模拟和契约校验</p><h2 id="Mock-Stub工具-模拟测试"><a href="#Mock-Stub工具-模拟测试" class="headerlink" title="Mock&#x2F;Stub工具(模拟测试)"></a>Mock&#x2F;Stub工具(模拟测试)</h2><h3 id="Mockito"><a href="#Mockito" class="headerlink" title="Mockito"></a>Mockito</h3><p>Java mock框架</p><h3 id="GoMock"><a href="#GoMock" class="headerlink" title="GoMock"></a>GoMock</h3><p>Go mock工具</p><h3 id="WireMock"><a href="#WireMock" class="headerlink" title="WireMock"></a>WireMock</h3><p>REST API mock工具</p><h3 id="Mock-js"><a href="#Mock-js" class="headerlink" title="Mock.js"></a>Mock.js</h3><p>前端生成假数据</p><h2 id="日志-监控测试工具"><a href="#日志-监控测试工具" class="headerlink" title="日志&amp;监控测试工具"></a>日志&amp;监控测试工具</h2><h3 id="Prometheus-Grafana"><a href="#Prometheus-Grafana" class="headerlink" title="Prometheus + Grafana"></a>Prometheus + Grafana</h3><p>性能监控、服务指标可视化</p><h3 id="ELK-ElasticSearch-Logstash-Kibana"><a href="#ELK-ElasticSearch-Logstash-Kibana" class="headerlink" title="ELK(ElasticSearch+Logstash+Kibana)"></a>ELK(ElasticSearch+Logstash+Kibana)</h3><p>日志收集与分析</p><h3 id="Jaeger-Zipkin"><a href="#Jaeger-Zipkin" class="headerlink" title="Jaeger&#x2F;Zipkin"></a>Jaeger&#x2F;Zipkin</h3><p>分布式链路追踪(微服务)</p><h2 id="测试管理工具-测试流程"><a href="#测试管理工具-测试流程" class="headerlink" title="测试管理工具(测试流程)"></a>测试管理工具(测试流程)</h2><h3 id="TestLink"><a href="#TestLink" class="headerlink" title="TestLink"></a>TestLink</h3><p>测试用例管理</p><h3 id="禅道"><a href="#禅道" class="headerlink" title="禅道"></a>禅道</h3><p>中国最常用测试管理工具</p><h3 id="Jira"><a href="#Jira" class="headerlink" title="Jira"></a>Jira</h3><p>国际团队最常用，敏捷项目管理</p><h3 id="Azure-DevOps"><a href="#Azure-DevOps" class="headerlink" title="Azure DevOps"></a>Azure DevOps</h3><p>测试计划+CI&#x2F;CD+项目管理一体化</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+          <category> 测开 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>契约测试</title>
+      <link href="/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/17/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>契约测试（Contract Testing）是一种用于微服务或前后端分离系统中的测试方式，主要目的是确保服务提供方（Provider）和服务调用方（Consumer）之间的接口“契约”始终保持一致、不会被意外破坏。</p><p>Consumer 定义“我需要什么样的 API”，Provider 承诺“我提供的 API 符合你的要求”，并通过测试自动验证双方是否匹配。</p><p>契约测试就是为了解决接口不一致、沟通不清导致的问题。</p><h2 id="how"><a href="#how" class="headerlink" title="how"></a>how</h2><h3 id="Consumer-Contract-消费者契约"><a href="#Consumer-Contract-消费者契约" class="headerlink" title="Consumer Contract(消费者契约)"></a>Consumer Contract(消费者契约)</h3><p>由消费者写下“我调用这个 API 时，我需要的数据结构是什么”。</p><h3 id="Provider-Verification-服务提供方验证"><a href="#Provider-Verification-服务提供方验证" class="headerlink" title="Provider Verification(服务提供方验证)"></a>Provider Verification(服务提供方验证)</h3><p>Provider 必须验证自己返回的数据结构与消费者要求一致。如果不一致，则无法上线，防止破坏接口。</p><h2 id="常用tools"><a href="#常用tools" class="headerlink" title="常用tools"></a>常用tools</h2><p>Pact（最流行）</p><p>Spring Cloud Contract（Java&#x2F;微服务中常用）</p><p>Hoverfly（API 模拟）</p><p>契约测试的特殊点是 双方共同维护，不需要全部服务都跑起来。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 契约测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Fake</title>
       <link href="/JasmineRain.github.io/2025/11/17/Fake/"/>
       <url>/JasmineRain.github.io/2025/11/17/Fake/</url>
@@ -600,9 +652,9 @@
       
         <tags>
             
-            <tag> 八股 </tag>
-            
             <tag> 计算机网络 </tag>
+            
+            <tag> 八股 </tag>
             
         </tags>
       
@@ -627,9 +679,9 @@
       
         <tags>
             
-            <tag> c++ </tag>
-            
             <tag> 八股 </tag>
+            
+            <tag> c++ </tag>
             
         </tags>
       
