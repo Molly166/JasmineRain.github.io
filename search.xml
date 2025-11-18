@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>强度测试</title>
+      <link href="/JasmineRain.github.io/2025/11/18/%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/18/%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>强度测试（Strength Testing）是软件性能测试的一种，用于验证系统在长时间高压力、高强度条件下是否能够稳定运行。它关注的是系统在接近极限的情况下能否保持可用性，而不是瞬时吞吐或峰值性能。</p><p>强度测试是让系统在高压力、极端资源消耗或恶劣环境下长时间运行，验证系统是否会出现崩溃、内存泄漏、死锁、性能下降等问题。<br>它主要评估系统的 稳定性（Stability） 和 鲁棒性（Robustness）。</p><p>强度测试又称：耐久性测试（Endurance Test）、浸泡测试（Soak Test）、稳定性测试（Stability Test）</p><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol><li>检查系统在压力不断累积下是否会出问题</li><li>发现隐藏的性能瓶颈</li><li>找出资源耗尽类型缺陷（内存泄漏、线程泄漏、死锁）</li><li>评估系统的恢复能力（是否能自愈或降级）</li></ol><h2 id="强度测试常测哪些问题"><a href="#强度测试常测哪些问题" class="headerlink" title="强度测试常测哪些问题"></a>强度测试常测哪些问题</h2><ul><li>内存泄漏（memory leak）</li><li>句柄泄漏（file handle &#x2F; socket 不释放）</li><li>线程池耗尽</li><li>数据库连接池耗尽</li><li>服务长期运行后响应变慢</li><li>CPU 持续高占用导致系统卡死</li><li>缓存击穿 &#x2F; 缓存雪崩</li><li>日志无限增长导致磁盘满</li></ul><p>这些都 短期压力测试无法发现。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>强度测试是在接近最大工作负载的情况下，长时间、持续地对系统进行测试，以发现内存泄漏等长时间运行才会暴露的问题，评估系统稳定性。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 强度测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>E2E测试</title>
+      <link href="/JasmineRain.github.io/2025/11/18/E2E%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/18/E2E%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>E2E 测试（End-to-End Test，全流程测试）是软件测试中最高层级的一种测试方法，它通过模拟真实用户场景，从系统的入口到出口，验证整个系统在真实使用流程下是否能正确运作。</p><p>E2E测试就是模拟用户真实使用行为，从开始操作到最终结果，验证整个系统（前端 + 后端 + 数据库 + 外部服务）是否真正能跑通。</p><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol><li>测试的是 完整业务流程（例如：登录 → 搜索 → 下单 → 支付）。</li><li>覆盖多个系统组件：前端、后端、数据库、API、第三方服务。</li><li>验证系统能否像用户实际操作一样 端到端跑通。</li><li>往往是跨模块、跨系统的集成验证。</li></ol><h2 id="E2E测试常见场景"><a href="#E2E测试常见场景" class="headerlink" title="E2E测试常见场景"></a>E2E测试常见场景</h2><table><thead><tr><th>场景</th><th>说明</th></tr></thead><tbody><tr><td>注册登录流程</td><td>用户注册 → 邮箱验证 → 登录成功</td></tr><tr><td>购物流程</td><td>选择商品 → 加入购物车 → 下单 → 支付</td></tr><tr><td>权限流程</td><td>普通用户不能访问管理员页面</td></tr><tr><td>多系统协作流程</td><td>业务系统 A → 调用 B → 写入数据库 → 显示结果</td></tr></tbody></table><h2 id="常用E2E测试工具"><a href="#常用E2E测试工具" class="headerlink" title="常用E2E测试工具"></a>常用E2E测试工具</h2><p>前端：Cypress、Playwright、Selenium<br>移动端：Appium<br>后端API E2E：Postman+Newman、k6(API负载+E2E)</p><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>优点：</p><ol><li>真实模拟用户行为 → 最贴近真实使用</li><li>验证系统整体质量 → 能发现跨模块问题</li><li>适合测试复杂业务流程</li></ol><p>缺点：</p><ol><li>编写成本高</li><li>执行时间长</li><li>维护成本高（UI改动易导致测试失效）</li><li>不适合测试微小逻辑，适合整体流程</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> E2E测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>负载测试</title>
       <link href="/JasmineRain.github.io/2025/11/18/%E8%B4%9F%E8%BD%BD%E6%B5%8B%E8%AF%95/"/>
       <url>/JasmineRain.github.io/2025/11/18/%E8%B4%9F%E8%BD%BD%E6%B5%8B%E8%AF%95/</url>
