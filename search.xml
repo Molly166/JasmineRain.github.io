@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>软件质量管理之QM、QA、QC</title>
+      <link href="/JasmineRain.github.io/2025/11/19/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E4%B9%8BQM%E3%80%81QA%E3%80%81QC/"/>
+      <url>/JasmineRain.github.io/2025/11/19/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E4%B9%8BQM%E3%80%81QA%E3%80%81QC/</url>
+      
+        <content type="html"><![CDATA[<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p><strong>QM &#x3D; 管理质量体系（制定制度）</strong><br><strong>QA &#x3D; 过程质量保证（监督执行）</strong><br><strong>QC &#x3D; 产品质量控制（具体测试）</strong></p><h2 id="QM"><a href="#QM" class="headerlink" title="QM"></a>QM</h2><p>“做制度的”</p><p>QM 是一个组织层面上的质量管理活动，负责制定整体质量目标、规范、流程。</p><p>关键词：制度、流程、策略、标准、体系（ISO9001、CMMI）</p><p>企业层面的“质量管理体系建设者”。</p><h2 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h2><p>“看着流程走，确保做对事”</p><p>QA 的核心是：过程导向，预防缺陷。<br>它不具体写测试用例，而是保证整个开发流程按质量体系执行。</p><p>关键词：过程、审核、评审、预防缺陷、监控执行情况</p><p>QA 做什么？</p><ul><li>监督开发过程是否遵循规范</li><li>检查需求评审、设计评审是否完成</li><li>做质量审计</li><li>推动缺陷根因分析</li><li>推进流程改进</li></ul><p>QA 不测功能，也不会直接测试产品。</p><p>QA 保证“事情是按正确的方法做的”。</p><h2 id="QC"><a href="#QC" class="headerlink" title="QC"></a>QC</h2><p>“动手实测产品，发现问题”</p><p>QC 就是传统意义上的测试人员，面向产品，发现缺陷。</p><p>关键词：产品、测试、缺陷识别、验证、结果导向</p><p>QC 做什么？</p><ul><li>功能测试</li><li>性能测试</li><li>安全测试</li><li>测试用例编写与执行</li><li>缺陷报告</li><li>回归测试</li></ul><p>QC 是“直接发现问题的人”。</p><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table><thead><tr><th>角色</th><th>关注点</th><th>做什么</th></tr></thead><tbody><tr><td>QM</td><td>制度层</td><td>定规则、建体系</td></tr><tr><td>QA</td><td>过程层</td><td>监督流程是否按规则执行</td></tr><tr><td>QC</td><td>产品层</td><td>通过测试发现缺陷</td></tr></tbody></table><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>QM（质量管理）</strong>：负责制定组织级的质量策略、流程和标准，构建质量体系。<br><strong>QA（质量保证）</strong>：通过过程监控、评审、审计等方式确保开发过程遵守质量体系，以预防缺陷。<br><strong>QC（质量控制）</strong>：针对产品本身执行测试，通过检验和验证活动发现缺陷，以保证交付物质量。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件质量管理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>强度测试</title>
       <link href="/JasmineRain.github.io/2025/11/18/%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%AF%95/"/>
       <url>/JasmineRain.github.io/2025/11/18/%E5%BC%BA%E5%BA%A6%E6%B5%8B%E8%AF%95/</url>
