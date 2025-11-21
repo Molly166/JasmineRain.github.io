@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>非增量集成测试和增量集成测试</title>
+      <link href="/JasmineRain.github.io/2025/11/21/%E9%9D%9E%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E5%92%8C%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/21/%E9%9D%9E%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E5%92%8C%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="非增量集成测试"><a href="#非增量集成测试" class="headerlink" title="非增量集成测试"></a>非增量集成测试</h2><h3 id="非增量集成测试定义"><a href="#非增量集成测试定义" class="headerlink" title="非增量集成测试定义"></a>非增量集成测试定义</h3><p>一次性集成测试。</p><p>所有模块在开发完成后一次性组合起来进行测试。<br>模块间的接口和交互问题在整个系统集成后才发现。</p><p>模块少、依赖关系简单的项目。<br>开发周期较短、临时性小型项目。</p><h3 id="非增量集成测试特点"><a href="#非增量集成测试特点" class="headerlink" title="非增量集成测试特点"></a>非增量集成测试特点</h3><p>测试模块完成后，不分阶段，直接整体集成<br>可以快速验证系统整体功能，但定位问题困难那</p><h3 id="非增量集成测试优点"><a href="#非增量集成测试优点" class="headerlink" title="非增量集成测试优点"></a>非增量集成测试优点</h3><p>测试准备简单，不需要构建复杂的测试驱动。<br>对小型、模块数量少的项目比较适用。</p><h3 id="非增量集成测试缺点"><a href="#非增量集成测试缺点" class="headerlink" title="非增量集成测试缺点"></a>非增量集成测试缺点</h3><p>定位困难，出现问题难以追踪到具体模块。<br>发现问题较晚，修复成本高，风险大，如果多个模块有问题，调试非常复杂。</p><h2 id="增量集成测试"><a href="#增量集成测试" class="headerlink" title="增量集成测试"></a>增量集成测试</h2><h3 id="增量集成测试定义"><a href="#增量集成测试定义" class="headerlink" title="增量集成测试定义"></a>增量集成测试定义</h3><p>每次开发完成后逐步集成测试，每次只集成部分模块。每次集成后进行测试，发现问题及时解决，然后再集成下一个模块。</p><p>可以分为：</p><ul><li>自顶向下(Top-down)<ul><li>先测试顶层模块，再逐步集成底层模块</li><li>需要使用<strong>桩Stub</strong>模拟未完成的底层模块</li></ul></li><li>自底向上(Botton-up)<ul><li>先测试底层模块，再逐步集成上层模块</li><li>需要使用**驱动(Driver)**模拟未完成的上层模块</li></ul></li><li>混合<ul><li>顶层和底层同时逐步集成，中间模块逐步完成</li></ul></li></ul><p>适合模块多、依赖复杂的系统。<br>开发周期长、系统功能复杂的大型项目。</p><h3 id="增量集成测试特点"><a href="#增量集成测试特点" class="headerlink" title="增量集成测试特点"></a>增量集成测试特点</h3><p>集成过程分阶段，逐步测试模块接口。早期发现问题，便于定位和修复。</p><h3 id="增量集成测试优点"><a href="#增量集成测试优点" class="headerlink" title="增量集成测试优点"></a>增量集成测试优点</h3><ol><li>缺陷发现早，定位准确</li><li>系统风险低，问题不会积累到最后才爆发</li><li>适合大型复杂系统</li></ol><h3 id="增量集成测试缺点"><a href="#增量集成测试缺点" class="headerlink" title="增量集成测试缺点"></a>增量集成测试缺点</h3><ol><li>测试准备工作多，需要桩和驱动</li><li>测试计划复杂，周期可能较长</li></ol><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table><thead><tr><th>特性</th><th>非增量集成测试</th><th>增量集成测试</th></tr></thead><tbody><tr><td>集成方式</td><td>一次性集成全部模块</td><td>逐步集成模块</td></tr><tr><td>缺陷发现</td><td>晚，定位困难</td><td>早，定位容易</td></tr><tr><td>风险</td><td>高</td><td>低</td></tr><tr><td>测试准备</td><td>简单</td><td>复杂，需要桩和驱动</td></tr><tr><td>适用项目</td><td>小型、模块少</td><td>大型、模块多</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 集成测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>浸泡测试</title>
       <link href="/JasmineRain.github.io/2025/11/20/%E6%B5%B8%E6%B3%A1%E6%B5%8B%E8%AF%95/"/>
       <url>/JasmineRain.github.io/2025/11/20/%E6%B5%B8%E6%B3%A1%E6%B5%8B%E8%AF%95/</url>
@@ -875,9 +900,9 @@
       
         <tags>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 八股 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -902,9 +927,9 @@
       
         <tags>
             
-            <tag> 八股 </tag>
-            
             <tag> c++ </tag>
+            
+            <tag> 八股 </tag>
             
         </tags>
       
@@ -1233,11 +1258,11 @@
       
         <tags>
             
+            <tag> go </tag>
+            
             <tag> Dijkstra </tag>
             
             <tag> cpp </tag>
-            
-            <tag> go </tag>
             
         </tags>
       
