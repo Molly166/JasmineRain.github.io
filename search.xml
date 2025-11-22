@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>压力测试</title>
+      <link href="/JasmineRain.github.io/2025/11/22/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/22/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>压力测试是一种非功能测试，用来评估系统在高负载、极端压力下的表现。它的目的是让系统不能正常工作，压垮它，看看会在哪里坏、怎么坏、坏得是否优雅。</p><p>压力测试&#x3D;把系统压到极致，观察性能瓶颈和系统崩溃点。</p><h2 id="压力测试和性能测试的关系"><a href="#压力测试和性能测试的关系" class="headerlink" title="压力测试和性能测试的关系"></a>压力测试和性能测试的关系</h2><table><thead><tr><th>测试类型</th><th>目的</th></tr></thead><tbody><tr><td>性能测试</td><td>测试正常负载下的性能(响应时间、TPS、QPS、吞吐量)</td></tr><tr><td>负载测试</td><td>测试逐步增加负载时间时系统何时达到最大并发</td></tr><tr><td>压力测试</td><td>超过最大负载后继续加压，直到崩溃</td></tr><tr><td>稳定性&#x2F;耐久测试</td><td>长时间运行系统，观察是否泄露、积累错误</td></tr></tbody></table><p>压力测试是性能测试的一种，属于极限破坏类测试。</p><h2 id="压力测试的目的"><a href="#压力测试的目的" class="headerlink" title="压力测试的目的"></a>压力测试的目的</h2><ol><li>找出系统性能瓶颈（CPU、内存、数据库、IO、网络）</li><li>找出系统最大承载能力上限</li><li>观察系统在高压下的：稳定性、可用性、恢复能力</li><li>发现潜在的：死锁、内存泄漏、线程池耗尽、数据库连接耗尽、队列积压、超时、错误率上升</li></ol><h2 id="压力测试流程"><a href="#压力测试流程" class="headerlink" title="压力测试流程"></a>压力测试流程</h2><ol><li>确定测压目标</li><li>确定压测指标</li><li>编写压测脚本</li><li>准备测压环境</li><li>执行压力测试：超过负载逐步加压，直到系统出现明显异常</li><li>记录日志和监控</li><li>分析瓶颈并优化</li><li>重新测压验证优化效果</li></ol><h2 id="压力测试中的关键指标"><a href="#压力测试中的关键指标" class="headerlink" title="压力测试中的关键指标"></a>压力测试中的关键指标</h2><ul><li>性能指标<ul><li>QPS(每秒查询数)</li><li>TPS(每秒事务数)</li><li>RT(响应时间)</li><li>吞吐量(MB&#x2F;s)</li></ul></li><li>资源指标<ul><li>CPU、内存(Heap&#x2F;Non-Heap)</li><li>磁盘IO</li><li>网络带宽</li><li>线程数&#x2F;线程池状态</li><li>GC次数&#x2F;停顿时间(Java)</li></ul></li><li>系统指标<ul><li>错误率(Error%)</li><li>超时率</li><li>成功率</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 压力测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>功能测试</title>
+      <link href="/JasmineRain.github.io/2025/11/22/%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/"/>
+      <url>/JasmineRain.github.io/2025/11/22/%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>功能测试是按照需求&#x2F;规格从外部行为验证软件是否实现了规定的功能。关注输入处理输出是否与需求一致，属于黑盒测试范畴。</p><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol><li>验证功能实现是否满足需求(正确性)</li><li>发现业务逻辑、界面、数据校验等错误</li><li>验证系统各模块、接口间的交互是否按要求工作</li><li>为发布决策提供质量判断(功能维度)</li></ol><h2 id="测试范围"><a href="#测试范围" class="headerlink" title="测试范围"></a>测试范围</h2><p>功能点(功能列表中的每一项)<br>界面交互(按钮、输入框、提示信息)<br>边界和异常处理（输入校验、错误提示）<br>业务流程（多步骤用例）<br>数据持久化（数据库写入&#x2F;读取）<br>系统集成点（第三方接口、消息队列）<br>权限&#x2F;角色控制</p><h2 id="按目的分几类功能测试"><a href="#按目的分几类功能测试" class="headerlink" title="按目的分几类功能测试"></a>按目的分几类功能测试</h2><p>单功能测试：单个功能点（例如“修改密码”）。<br>集成功能测试：模块间协作（例如：下单→支付→发货）。<br>回归功能测试：功能变更后保证老功能不被破坏。<br>冒烟功能测试：核心功能是否能工作（发布前快速验证）。<br>验收测试（或UAT）：交付前按业务方验收用例检验。</p><h2 id="用例设计技术"><a href="#用例设计技术" class="headerlink" title="用例设计技术"></a>用例设计技术</h2><p>等价类划分（合理分组相同处理的输入）<br>边界值分析（关注边界、上下1位）<br>判定表（复杂条件组合）<br>因果图（把逻辑转为图再转用例）<br>状态迁移测试（有状态机的功能）<br>场景&#x2F;用户流程（端到端业务场景）<br>错误推测（基于经验找潜在错误）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 功能测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>非增量集成测试和增量集成测试</title>
       <link href="/JasmineRain.github.io/2025/11/21/%E9%9D%9E%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E5%92%8C%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95/"/>
       <url>/JasmineRain.github.io/2025/11/21/%E9%9D%9E%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E5%92%8C%E5%A2%9E%E9%87%8F%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95/</url>
@@ -900,9 +950,9 @@
       
         <tags>
             
-            <tag> 八股 </tag>
-            
             <tag> 计算机网络 </tag>
+            
+            <tag> 八股 </tag>
             
         </tags>
       
@@ -927,9 +977,9 @@
       
         <tags>
             
-            <tag> c++ </tag>
-            
             <tag> 八股 </tag>
+            
+            <tag> c++ </tag>
             
         </tags>
       
@@ -1258,11 +1308,11 @@
       
         <tags>
             
-            <tag> go </tag>
-            
             <tag> Dijkstra </tag>
             
             <tag> cpp </tag>
+            
+            <tag> go </tag>
             
         </tags>
       
