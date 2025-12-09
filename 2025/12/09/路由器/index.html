@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>路由器 | JasmineRain's blog</title><meta name="author" content="JasmineRain"><meta name="copyright" content="JasmineRain"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="🚀 什么是路由器（Router）路由器是一种连接多个网络并根据路由规则“转发数据包”的网络层设备。 它工作在 OSI 第三层——网络层。在不同的局域网、广域网之间，路由器负责决定数据包“下一跳到哪去”。  🧩 路由器的主要作用1️⃣ 实现不同网络之间的通信不同网段（如 192.168.1.x 与 192.168.2.x）无法直接通信，需要路由器连接。 2️⃣ 选择最佳路径（路由选择）路由器根据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由器">
+<meta property="og:url" content="https://molly166.github.io/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/index.html">
+<meta property="og:site_name" content="JasmineRain&#39;s blog">
+<meta property="og:description" content="🚀 什么是路由器（Router）路由器是一种连接多个网络并根据路由规则“转发数据包”的网络层设备。 它工作在 OSI 第三层——网络层。在不同的局域网、广域网之间，路由器负责决定数据包“下一跳到哪去”。  🧩 路由器的主要作用1️⃣ 实现不同网络之间的通信不同网段（如 192.168.1.x 与 192.168.2.x）无法直接通信，需要路由器连接。 2️⃣ 选择最佳路径（路由选择）路由器根据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png">
+<meta property="article:published_time" content="2025-12-09T01:53:49.000Z">
+<meta property="article:modified_time" content="2025-12-09T02:02:19.085Z">
+<meta property="article:author" content="JasmineRain">
+<meta property="article:tag" content="计网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "路由器",
+  "url": "https://molly166.github.io/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/",
+  "image": "https://molly166.github.io/JasmineRain.github.io/img/head1.png",
+  "datePublished": "2025-12-09T01:53:49.000Z",
+  "dateModified": "2025-12-09T02:02:19.085Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "JasmineRain",
+      "url": "https://molly166.github.io/JasmineRain.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/JasmineRain.github.io/img/favicon.png"><link rel="canonical" href="https://molly166.github.io/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/JasmineRain.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/JasmineRain.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/JasmineRain.github.io/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '路由器',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/JasmineRain.github.io/img/background2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">60</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-color: rgba(0,0,0,0);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/JasmineRain.github.io/"><span class="site-name">JasmineRain's blog</span></a><a class="nav-page-title" href="/JasmineRain.github.io/"><span class="site-name">路由器</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">路由器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-09T01:53:49.000Z" title="发表于 2025-12-09 09:53:49">2025-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-09T02:02:19.085Z" title="更新于 2025-12-09 10:02:19">2025-12-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/JasmineRain.github.io/categories/%E8%AE%A1%E7%BD%91/">计网</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">615</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="🚀-什么是路由器（Router）"><a href="#🚀-什么是路由器（Router）" class="headerlink" title="🚀 什么是路由器（Router）"></a>🚀 什么是路由器（Router）</h2><p><strong>路由器是一种连接多个网络并根据路由规则“转发数据包”的网络层设备。</strong></p>
+<p>它工作在 <strong>OSI 第三层——网络层</strong>。<br>在不同的局域网、广域网之间，路由器负责决定数据包“下一跳到哪去”。</p>
+<hr>
+<h2 id="🧩-路由器的主要作用"><a href="#🧩-路由器的主要作用" class="headerlink" title="🧩 路由器的主要作用"></a>🧩 路由器的主要作用</h2><h3 id="1️⃣-实现不同网络之间的通信"><a href="#1️⃣-实现不同网络之间的通信" class="headerlink" title="1️⃣ 实现不同网络之间的通信"></a>1️⃣ <strong>实现不同网络之间的通信</strong></h3><p>不同网段（如 192.168.1.x 与 192.168.2.x）无法直接通信，需要路由器连接。</p>
+<h3 id="2️⃣-选择最佳路径（路由选择）"><a href="#2️⃣-选择最佳路径（路由选择）" class="headerlink" title="2️⃣ 选择最佳路径（路由选择）"></a>2️⃣ <strong>选择最佳路径（路由选择）</strong></h3><p>路由器根据路由表决定数据从哪条路径走。</p>
+<h3 id="3️⃣-数据包转发（路由转发）"><a href="#3️⃣-数据包转发（路由转发）" class="headerlink" title="3️⃣ 数据包转发（路由转发）"></a>3️⃣ <strong>数据包转发（路由转发）</strong></h3><p>收到数据包 → 查看目的 IP → 查路由表 → 转发到下一跳。</p>
+<h3 id="4️⃣-网络隔离-安全管理"><a href="#4️⃣-网络隔离-安全管理" class="headerlink" title="4️⃣ 网络隔离 + 安全管理"></a>4️⃣ <strong>网络隔离 + 安全管理</strong></h3><p>NAT、防火墙、ACL 等功能能隔离内外网。</p>
+<h3 id="5️⃣-提供无线功能（家用路由器）"><a href="#5️⃣-提供无线功能（家用路由器）" class="headerlink" title="5️⃣ 提供无线功能（家用路由器）"></a>5️⃣ <strong>提供无线功能（家用路由器）</strong></h3><p>无线路由器 &#x3D; 路由 + 交换机 + AP（无线接入点）+ DHCP 等功能。</p>
+<hr>
+<h2 id="📡-路由器的核心功能详解"><a href="#📡-路由器的核心功能详解" class="headerlink" title="📡 路由器的核心功能详解"></a>📡 路由器的核心功能详解</h2><h3 id="①-路由选择（Routing）"><a href="#①-路由选择（Routing）" class="headerlink" title="① 路由选择（Routing）"></a>① 路由选择（Routing）</h3><p>通过路由协议建立路由表，如：</p>
+<ul>
+<li><strong>静态路由</strong></li>
+<li><strong>RIP</strong>（距离向量）</li>
+<li><strong>OSPF</strong>（链路状态）</li>
+<li><strong>BGP</strong>（互联网骨干路由协议）</li>
+</ul>
+<p>路由器计算最优路径，然后填到路由表。</p>
+<h3 id="②-路由转发（Forwarding）"><a href="#②-路由转发（Forwarding）" class="headerlink" title="② 路由转发（Forwarding）"></a>② 路由转发（Forwarding）</h3><p>路由器按“最长前缀匹配”原则，从路由表中找最佳条目，然后把包发出去。</p>
+<h3 id="③-NAT（网络地址转换）"><a href="#③-NAT（网络地址转换）" class="headerlink" title="③ NAT（网络地址转换）"></a>③ NAT（网络地址转换）</h3><p>将私网 IP（如 192.168.x.x）转换成公网 IP，使内网电脑共同访问互联网。</p>
+<p>家用路由器都依靠 NAT 上网。</p>
+<h3 id="④-DHCP（提供自动分配-IP）"><a href="#④-DHCP（提供自动分配-IP）" class="headerlink" title="④ DHCP（提供自动分配 IP）"></a>④ DHCP（提供自动分配 IP）</h3><p>很多路由器内置 DHCP 服务器，为终端自动分配：</p>
+<ul>
+<li>IP 地址</li>
+<li>子网掩码</li>
+<li>网关</li>
+<li>DNS</li>
+</ul>
+<hr>
+<h2 id="🔥-路由器-vs-交换机"><a href="#🔥-路由器-vs-交换机" class="headerlink" title="🔥 路由器 vs 交换机"></a>🔥 路由器 vs 交换机</h2><table>
+<thead>
+<tr>
+<th>设备</th>
+<th>工作层级</th>
+<th>区分依据</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>交换机（Switch）</strong></td>
+<td>数据链路层（第 2 层）</td>
+<td>MAC 地址</td>
+<td>连接同一局域网</td>
+</tr>
+<tr>
+<td><strong>路由器（Router）</strong></td>
+<td>网络层（第 3 层）</td>
+<td>IP 地址</td>
+<td>连接不同网络</td>
+</tr>
+</tbody></table>
+<p>总结：<br>➡ <strong>交换机连网段，路由器连网络。</strong></p>
+<hr>
+<h2 id="🏠-家用路由器实际上是“三合一”"><a href="#🏠-家用路由器实际上是“三合一”" class="headerlink" title="🏠 家用路由器实际上是“三合一”"></a>🏠 家用路由器实际上是“三合一”</h2><ol>
+<li>路由器（负责转发互联网流量）</li>
+<li>交换机（LAN 口互联）</li>
+<li>无线 AP（Wi-Fi 功能）</li>
+</ol>
+<p>所以普通用户只叫它“路由器”。</p>
+<hr>
+<h2 id="🔥-路由器的组成"><a href="#🔥-路由器的组成" class="headerlink" title="🔥 路由器的组成"></a>🔥 路由器的组成</h2><ul>
+<li><strong>输入端口（Input Port）</strong></li>
+<li><strong>交换结构（Switching Fabric）</strong></li>
+<li><strong>输出端口（Output Port）</strong></li>
+<li><strong>路由处理器（Route Processor）</strong></li>
+</ul>
+<hr>
+<h2 id="🧠-一句话总结"><a href="#🧠-一句话总结" class="headerlink" title="🧠 一句话总结"></a>🧠 一句话总结</h2><p><strong>路由器决定数据包走哪条路，确保不同网络之间能互相通信，它是网络层的核心设备。</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io">JasmineRain</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/">https://molly166.github.io/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://molly166.github.io/JasmineRain.github.io" target="_blank">JasmineRain's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/JasmineRain.github.io/tags/%E8%AE%A1%E7%BD%91/">计网</a></div><div class="post-share"><div class="social-share" data-image="/JasmineRain.github.io/img/head1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/JasmineRain.github.io/2025/12/09/TCP%E5%92%8CUDP/" title="TCP和UDP"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">TCP和UDP</div></div><div class="info-2"><div class="info-item-1">👉总结TCP：有连接、有序、可靠 → 慢。UDP：无连接、不可靠 → 快。 🚀 TCP（Transmission Control Protocol）面向连接、可靠传输、字节流。 ⭐ TCP 的特点   特点 说明    面向连接 三次握手建立连接、四次挥手关闭   可靠传输 超时重传、确认应答、序列号、滑动窗口   有序传输 丢包&#x2F;乱序会自动重排   流量控制 滑动窗口避免发送过快   拥塞控制 慢启动、拥塞避免、快速重传等   面向字节流 数据没有界限，需要应用层自己定义边界   📍 适用场景：需要保证数据可靠、有序，如：HTTP、HTTPS、FTP、SMTP、SSH…  🚀 UDP（User Datagram Protocol）无连接、不可靠、面向报文。 ⭐ UDP 的特点   特点 说明    无连接 无需握手，直接发送   不保证可靠性 不重传、不确认、不保证顺序   面向报文 发一次就是一个独立报文，不拆不并   速度快、开销小 适合实时场景   可以广播和组播 TCP 不支持   📍 适用场景：速度优先、实时性要求高，如：直播、游戏、语音通话、视频...</div></div></div></a><a class="pagination-related" href="/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/" title="ARP鍜孯ARP"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">ARP鍜孯ARP</div></div><div class="info-2"><div class="info-item-1">✅ARP（Address Resolution Protocol）地址解析协议作用：👉已知IP地址，求MAC地址 使用场景：🎬主机在发送数据时，链路层需要目标MAC地址。如果ARP缓存里没有，就必须用ARP 工作流程：👔  ARP 请求广播： 源主机广播：“谁是 IP &#x3D; X.X.X.X？请把 MAC 地址告诉我。”   ARP 响应单播： 目标主机回复：“我的 MAC 地址是 xx-xx-xx-xx-xx-xx。”   ARP 缓存 主机保存 IP ? MAC 的映射，提高效率。    特点：🕵️  请求是广播 响应是单播 属于网络层和链路层之间的协议  ✅RARP（Reverse ARP）反向地址解析协议作用：👉已知 MAC 地址，求 IP 地址。 典型用途：🎬早期用于 无盘工作站。无盘设备只有网卡 MAC，没有本地存储 IP，需要通过 RARP 服务器获取 IP。 工作流程：👔  主机发送 RARP 请求广播： “我的 MAC 地址是 xxx，谁能告诉我我的 IP？”   RARP 服务器单播响应： 告诉它对应的 IP。    缺点（导致淘汰的原因）...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/JasmineRain.github.io/2025/12/09/ADSL/" title="ADSL"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-09</div><div class="info-item-2">ADSL</div></div><div class="info-2"><div class="info-item-1">📡 ADSLADSL（Asymmetric Digital Subscriber Line）非对称数字用户线路是一种利用 普通电话线（铜线）提供宽带上网 的技术。 ADSL &#x3D; 用电话线实现宽带，下行快、上行慢，能同时打电话 + 上网。 非对称 指：👉 下载速率 &gt; 上传速率 例如：下行 10 Mbps，上行 1 Mbps。  🧩 ADSL 的作用 让用户在 不更换电话线 的前提下使用宽带上网 同时支持：✔ 上网✔ 打电话✔ 视频互不干扰   🔧 ADSL 的核心原理利用电话线 高频部分传输数据，低频部分继续传输语音。 电话线频率分割   功能 频率范围    语音电话 0 ~ 4 kHz   上行数据 25 ~ 138 kHz   下行数据 138 kHz ~ 1.1 MHz   这就是为什么 ADSL 可以边打电话边上网。  🔌 ADSL 上网需要哪些设备 ADSL Modem（猫）把电话线信号转换为数字数据。  分离器（Splitter）用来把语音信号和宽带信号分离。   家庭连接方式： 12电话线 → 分离器 →（语音）电话机          ...</div></div></div></a><a class="pagination-related" href="/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/" title="ARP鍜孯ARP"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-09</div><div class="info-item-2">ARP鍜孯ARP</div></div><div class="info-2"><div class="info-item-1">✅ARP（Address Resolution Protocol）地址解析协议作用：👉已知IP地址，求MAC地址 使用场景：🎬主机在发送数据时，链路层需要目标MAC地址。如果ARP缓存里没有，就必须用ARP 工作流程：👔  ARP 请求广播： 源主机广播：“谁是 IP &#x3D; X.X.X.X？请把 MAC 地址告诉我。”   ARP 响应单播： 目标主机回复：“我的 MAC 地址是 xx-xx-xx-xx-xx-xx。”   ARP 缓存 主机保存 IP ? MAC 的映射，提高效率。    特点：🕵️  请求是广播 响应是单播 属于网络层和链路层之间的协议  ✅RARP（Reverse ARP）反向地址解析协议作用：👉已知 MAC 地址，求 IP 地址。 典型用途：🎬早期用于 无盘工作站。无盘设备只有网卡 MAC，没有本地存储 IP，需要通过 RARP 服务器获取 IP。 工作流程：👔  主机发送 RARP 请求广播： “我的 MAC 地址是 xxx，谁能告诉我我的 IP？”   RARP 服务器单播响应： 告诉它对应的 IP。    缺点（导致淘汰的原因）...</div></div></div></a><a class="pagination-related" href="/JasmineRain.github.io/2025/12/09/TCP%E5%92%8CUDP/" title="TCP和UDP"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-09</div><div class="info-item-2">TCP和UDP</div></div><div class="info-2"><div class="info-item-1">👉总结TCP：有连接、有序、可靠 → 慢。UDP：无连接、不可靠 → 快。 🚀 TCP（Transmission Control Protocol）面向连接、可靠传输、字节流。 ⭐ TCP 的特点   特点 说明    面向连接 三次握手建立连接、四次挥手关闭   可靠传输 超时重传、确认应答、序列号、滑动窗口   有序传输 丢包&#x2F;乱序会自动重排   流量控制 滑动窗口避免发送过快   拥塞控制 慢启动、拥塞避免、快速重传等   面向字节流 数据没有界限，需要应用层自己定义边界   📍 适用场景：需要保证数据可靠、有序，如：HTTP、HTTPS、FTP、SMTP、SSH…  🚀 UDP（User Datagram Protocol）无连接、不可靠、面向报文。 ⭐ UDP 的特点   特点 说明    无连接 无需握手，直接发送   不保证可靠性 不重传、不确认、不保证顺序   面向报文 发一次就是一个独立报文，不拆不并   速度快、开销小 适合实时场景   可以广播和组播 TCP 不支持   📍 适用场景：速度优先、实时性要求高，如：直播、游戏、语音通话、视频...</div></div></div></a><a class="pagination-related" href="/JasmineRain.github.io/2025/11/16/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" title="TCP的三次握手和四次挥手"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-16</div><div class="info-item-2">TCP的三次握手和四次挥手</div></div><div class="info-2"><div class="info-item-1">TCP三次握手（建立连接）TCP是面向连接的，需要通过三次握手建立可靠连接 12345客户端（Client）                       服务端（Server）     | ------ SYN = 1, seq = x ------&gt; |     | &lt;--- SYN = 1, ACK = 1, y,x+1 ---|     | ------ ACK = 1, ack = y+1 -----&gt; |连接建立  第一次：Client-&gt;Server：SYN&#x3D;1客户端发送一个SYN包(同步序列号)，告诉服务器：我要发起连接，并带上初始序列号seq&#x3D;x 让服务器知道客户端想建立连接 第二次：Server-&gt;client：SYN&#x3D;1，ACK&#x3D;1服务器收到SYN后，发送SYN+ACKACK&#x3D;1表示：我收到了你的SYN，确认号ack&#x3D;x+1SYN&#x3D;1表示：我也准备好了建立连接，序列号seq&#x3D;y 服务器同意连接服务器也要同步序列号(SYN) 第三次：Client-&gt...</div></div></div></a><a class="pagination-related" href="/JasmineRain.github.io/2025/12/04/%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE/" title="路由选择协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-04</div><div class="info-item-2">路由选择协议</div></div><div class="info-2"><div class="info-item-1">🚦 路由选择协议（Routing Protocol）“路由选择协议”用于让路由器自动发现网络拓扑、计算路径、维护路由表，从而实现数据包的最优转发。 📌 路由选择协议分类静态路由 vs 动态路由静态路由（Static Routing）：管理员手动配置，拓扑变化不会自动更新 动态路由（Dynamic Routing）：路由器通过协议自动交换信息并更新路径 内部网关协议（IGP） vs 外部网关协议（EGP）判断依据：自治系统（AS）    类型 范围 协议    IGP 同一个 AS 内部使用 RIP、OSPF、IS-IS、EIGRP   EGP AS 之间 BGP   距离向量、链路状态、路径向量   协议类型 工作方式 特点 示例    距离向量（DV） 路由器告诉邻居“我到各目的地的距离” 简单、收敛慢、环路风险 RIP   链路状态（LS） 路由器向全网泛洪 LSAs，计算最短路径 收敛快，适合大网，复杂 OSPF、IS-IS   路径向量（PV） 记录路径经过的 AS 序列 适合互联网规模 BGP   📕主流路由协议RIP（Routing Information Pr...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">JasmineRain</div><div class="author-info-description">Better Call JasmineRain</div><div class="site-data"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">60</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">23</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Molly166"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88Router%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">🚀 什么是路由器（Router）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A9-%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BD%9C%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">🧩 路由器的主要作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E7%BD%91%E7%BB%9C%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-number">2.1.</span> <span class="toc-text">1️⃣ 实现不同网络之间的通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E9%80%89%E6%8B%A9%E6%9C%80%E4%BD%B3%E8%B7%AF%E5%BE%84%EF%BC%88%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2️⃣ 选择最佳路径（路由选择）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%B8%8F%E2%83%A3-%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91%EF%BC%88%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">3️⃣ 数据包转发（路由转发）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%EF%B8%8F%E2%83%A3-%E7%BD%91%E7%BB%9C%E9%9A%94%E7%A6%BB-%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86"><span class="toc-number">2.4.</span> <span class="toc-text">4️⃣ 网络隔离 + 安全管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%EF%B8%8F%E2%83%A3-%E6%8F%90%E4%BE%9B%E6%97%A0%E7%BA%BF%E5%8A%9F%E8%83%BD%EF%BC%88%E5%AE%B6%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">5️⃣ 提供无线功能（家用路由器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A1-%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">📡 路由器的核心功能详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A0-%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%EF%BC%88Routing%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">① 路由选择（Routing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A1-%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91%EF%BC%88Forwarding%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">② 路由转发（Forwarding）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A2-NAT%EF%BC%88%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">③ NAT（网络地址转换）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A3-DHCP%EF%BC%88%E6%8F%90%E4%BE%9B%E8%87%AA%E5%8A%A8%E5%88%86%E9%85%8D-IP%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">④ DHCP（提供自动分配 IP）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A5-%E8%B7%AF%E7%94%B1%E5%99%A8-vs-%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">4.</span> <span class="toc-text">🔥 路由器 vs 交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8F%A0-%E5%AE%B6%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%9E%E9%99%85%E4%B8%8A%E6%98%AF%E2%80%9C%E4%B8%89%E5%90%88%E4%B8%80%E2%80%9D"><span class="toc-number">5.</span> <span class="toc-text">🏠 家用路由器实际上是“三合一”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A5-%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">6.</span> <span class="toc-text">🔥 路由器的组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">🧠 一句话总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/09/ADSL/" title="ADSL">ADSL</a><time datetime="2025-12-09T02:09:08.000Z" title="发表于 2025-12-09 10:09:08">2025-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/09/TCP%E5%92%8CUDP/" title="TCP和UDP">TCP和UDP</a><time datetime="2025-12-09T02:03:35.000Z" title="发表于 2025-12-09 10:03:35">2025-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/" title="路由器">路由器</a><time datetime="2025-12-09T01:53:49.000Z" title="发表于 2025-12-09 09:53:49">2025-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/" title="ARP鍜孯ARP">ARP鍜孯ARP</a><time datetime="2025-12-09T01:33:31.000Z" title="发表于 2025-12-09 09:33:31">2025-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/04/%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE/" title="路由选择协议">路由选择协议</a><time datetime="2025-12-04T05:05:05.000Z" title="发表于 2025-12-04 13:05:05">2025-12-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By JasmineRain</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/JasmineRain.github.io/js/utils.js"></script><script src="/JasmineRain.github.io/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"placeholder":"欢迎留言！","requiredFields":["nick","mail"],"enableQQ":true,"meta":["nick","mail"],"pageSize":10}
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'VSEu2s9KNnp8cJTI2HEQNNck-gzGzoHsz',
+      appKey: 'F2i7X1gDtfVEnPEwTOXFy86x',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/JasmineRain.github.io/js/search/local-search.js"></script></div></div></body></html>

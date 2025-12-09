@@ -4,23 +4,98 @@
   
     
     <entry>
-      <title>ARP和RARP</title>
-      <link href="/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/"/>
-      <url>/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/</url>
+      <title>ADSL</title>
+      <link href="/JasmineRain.github.io/2025/12/09/ADSL/"/>
+      <url>/JasmineRain.github.io/2025/12/09/ADSL/</url>
       
-        <content type="html"><![CDATA[<h2 id="ARP��Address-Resolution-Protocol����ַ����Э��"><a href="#ARP��Address-Resolution-Protocol����ַ����Э��" class="headerlink" title="?ARP��Address Resolution Protocol����ַ����Э��"></a>?ARP��Address Resolution Protocol����ַ����Э��</h2><p>���ã�?��֪IP��ַ����MAC��ַ</p><p>ʹ�ó�����?�����ڷ�������ʱ����·����ҪĿ��MAC��ַ�����ARP������û�У��ͱ�����ARP</p><p>�������̣�?</p><ul><li>ARP ����㲥��<ul><li>Դ�����㲥����˭�� IP &#x3D; X.X.X.X����� MAC ��ַ�����ҡ���</li></ul></li><li>ARP ��Ӧ������<ul><li>Ŀ�������ظ������ҵ� MAC ��ַ�� xx-xx-xx-xx-xx-xx����</li></ul></li><li>ARP ����<ul><li>�������� IP ? MAC ��ӳ�䣬���Ч�ʡ�</li></ul></li></ul><p>�ص㣺??</p><ul><li>������<strong>�㲥</strong></li><li>��Ӧ��<strong>����</strong></li><li>����<strong>��������·��֮���Э��</strong></li></ul><h2 id="RARP��Reverse-ARP�������ַ����Э��"><a href="#RARP��Reverse-ARP�������ַ����Э��" class="headerlink" title="? RARP��Reverse ARP�������ַ����Э��"></a>? RARP��Reverse ARP�������ַ����Э��</h2><p>���ã�<br>? ��֪ MAC ��ַ���� IP ��ַ��</p><p>������;��<br>??��????�������� ���̹���վ��<br>�����豸ֻ������ MAC��û�б��ش洢 IP����Ҫͨ�� RARP ��������ȡ IP��</p><p>�������̣�?</p><ul><li>�������� RARP ����㲥��<ul><li>���ҵ� MAC ��ַ�� xxx��˭�ܸ������ҵ� IP����</li></ul></li><li>RARP ������������Ӧ��<ul><li>��������Ӧ�� IP��</li></ul></li></ul><p>ȱ�㣨������̭��ԭ�򣩣�??<br>? ������ͬһ������<br>? ��Ҫר�ŵ� RARP ������<br>? ֻ�ܷ��� IP�������������ء������</p><p>�ѱ������<br>?? BOOTP �� DHCP���ִ����缸������ DHCP ���� IP��</p><p>? ARP �� RARP �Աȱ�</p><table><thead><tr><th>Э��</th><th>��֪</th><th>���</th><th>ʹ�÷�ʽ</th><th>�Ƿ����ʹ��</th></tr></thead><tbody><tr><td>ARP</td><td>IP ��ַ</td><td>MAC ��ַ</td><td>�㲥����+������Ӧ</td><td>?�Թ㷺ʹ��</td></tr><tr><td>RARP</td><td>MAC ��ַ</td><td>IP ��ַ</td><td>�㲥���� + ������Ӧ</td><td>? �� DHCP ȡ��</td></tr></tbody></table><h2 id="�ܽ�"><a href="#�ܽ�" class="headerlink" title="�ܽ�"></a>�ܽ�</h2><p>ARP��IP �� MAC������ǰ�� MAC��<br>RARP��MAC �� IP�����̻��� IP��</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="📡-ADSL"><a href="#📡-ADSL" class="headerlink" title="📡 ADSL"></a>📡 ADSL</h2><p><strong>ADSL（Asymmetric Digital Subscriber Line）非对称数字用户线路</strong>是一种利用 <strong>普通电话线（铜线）提供宽带上网</strong> 的技术。</p><p><strong>ADSL &#x3D; 用电话线实现宽带，下行快、上行慢，能同时打电话 + 上网。</strong></p><p><strong>非对称</strong> 指：<br>👉 <strong>下载速率 &gt; 上传速率</strong></p><p>例如：下行 10 Mbps，上行 1 Mbps。</p><hr><h2 id="🧩-ADSL-的作用"><a href="#🧩-ADSL-的作用" class="headerlink" title="🧩 ADSL 的作用"></a>🧩 ADSL 的作用</h2><ul><li>让用户在 <strong>不更换电话线</strong> 的前提下使用宽带上网</li><li>同时支持：<br>✔ 上网<br>✔ 打电话<br>✔ 视频<br>互不干扰</li></ul><hr><h2 id="🔧-ADSL-的核心原理"><a href="#🔧-ADSL-的核心原理" class="headerlink" title="🔧 ADSL 的核心原理"></a>🔧 ADSL 的核心原理</h2><p>利用电话线 <strong>高频部分传输数据</strong>，低频部分继续传输语音。</p><h3 id="电话线频率分割"><a href="#电话线频率分割" class="headerlink" title="电话线频率分割"></a>电话线频率分割</h3><table><thead><tr><th>功能</th><th>频率范围</th></tr></thead><tbody><tr><td>语音电话</td><td>0 ~ 4 kHz</td></tr><tr><td>上行数据</td><td>25 ~ 138 kHz</td></tr><tr><td>下行数据</td><td>138 kHz ~ 1.1 MHz</td></tr></tbody></table><p>这就是为什么 ADSL <strong>可以边打电话边上网</strong>。</p><hr><h2 id="🔌-ADSL-上网需要哪些设备"><a href="#🔌-ADSL-上网需要哪些设备" class="headerlink" title="🔌 ADSL 上网需要哪些设备"></a>🔌 ADSL 上网需要哪些设备</h2><ol><li><p><strong>ADSL Modem（猫）</strong><br>把电话线信号转换为数字数据。</p></li><li><p><strong>分离器（Splitter）</strong><br>用来把语音信号和宽带信号分离。</p></li></ol><p>家庭连接方式：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">电话线 → 分离器 →（语音）电话机</span><br><span class="line"><span class="code">                      →（数据）ADSL Modem → 路由器 → Wi-Fi</span></span><br></pre></td></tr></table></figure><hr><h2 id="🚀-ADSL-的技术特点"><a href="#🚀-ADSL-的技术特点" class="headerlink" title="🚀 ADSL 的技术特点"></a>🚀 ADSL 的技术特点</h2><h3 id="⭐-优点"><a href="#⭐-优点" class="headerlink" title="⭐ 优点"></a>⭐ 优点</h3><ul><li>利用现有电话线，部署成本低</li><li>下载速度较快（适合家庭上网）</li><li>不影响电话通话</li></ul><h3 id="❗-缺点"><a href="#❗-缺点" class="headerlink" title="❗ 缺点"></a>❗ 缺点</h3><ul><li>上传速度低（非对称）</li><li>距离越远越慢（离机房越远速度越低）</li><li>信号容易受干扰，稳定性不如光纤</li><li>带宽上限较低（几十 Mbps 左右）</li></ul><hr><h2 id="🔥-ADSL-已被取代"><a href="#🔥-ADSL-已被取代" class="headerlink" title="🔥 ADSL 已被取代"></a>🔥 ADSL 已被取代</h2><p>现在大多数家庭已从 ADSL 升级到：</p><ul><li><strong>FTTH（光纤入户）</strong></li><li><strong>FTTB</strong></li><li><strong>HFC（光纤同轴混合）</strong></li></ul><p>光纤相比 ADSL：<br>💡 更快<br>💡 更稳定<br>💡 对距离几乎不敏感</p>]]></content>
       
       
       <categories>
           
-          <category> ���� </category>
+          <category> 计网 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> ���� </tag>
+            <tag> 计网 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>TCP和UDP</title>
+      <link href="/JasmineRain.github.io/2025/12/09/TCP%E5%92%8CUDP/"/>
+      <url>/JasmineRain.github.io/2025/12/09/TCP%E5%92%8CUDP/</url>
+      
+        <content type="html"><![CDATA[<h2 id="👉总结"><a href="#👉总结" class="headerlink" title="👉总结"></a>👉总结</h2><p><strong>TCP：有连接、有序、可靠 → 慢。</strong><br><strong>UDP：无连接、不可靠 → 快。</strong></p><h2 id="🚀-TCP（Transmission-Control-Protocol）"><a href="#🚀-TCP（Transmission-Control-Protocol）" class="headerlink" title="🚀 TCP（Transmission Control Protocol）"></a>🚀 TCP（Transmission Control Protocol）</h2><p><strong>面向连接、可靠传输、字节流</strong>。</p><h3 id="⭐-TCP-的特点"><a href="#⭐-TCP-的特点" class="headerlink" title="⭐ TCP 的特点"></a>⭐ TCP 的特点</h3><table><thead><tr><th>特点</th><th>说明</th></tr></thead><tbody><tr><td><strong>面向连接</strong></td><td>三次握手建立连接、四次挥手关闭</td></tr><tr><td><strong>可靠传输</strong></td><td>超时重传、确认应答、序列号、滑动窗口</td></tr><tr><td><strong>有序传输</strong></td><td>丢包&#x2F;乱序会自动重排</td></tr><tr><td><strong>流量控制</strong></td><td>滑动窗口避免发送过快</td></tr><tr><td><strong>拥塞控制</strong></td><td>慢启动、拥塞避免、快速重传等</td></tr><tr><td><strong>面向字节流</strong></td><td>数据没有界限，需要应用层自己定义边界</td></tr></tbody></table><p>📍 <strong>适用场景：</strong><br>需要保证数据可靠、有序，如：<br>HTTP、HTTPS、FTP、SMTP、SSH…</p><hr><h2 id="🚀-UDP（User-Datagram-Protocol）"><a href="#🚀-UDP（User-Datagram-Protocol）" class="headerlink" title="🚀 UDP（User Datagram Protocol）"></a>🚀 UDP（User Datagram Protocol）</h2><p><strong>无连接、不可靠、面向报文</strong>。</p><h3 id="⭐-UDP-的特点"><a href="#⭐-UDP-的特点" class="headerlink" title="⭐ UDP 的特点"></a>⭐ UDP 的特点</h3><table><thead><tr><th>特点</th><th>说明</th></tr></thead><tbody><tr><td><strong>无连接</strong></td><td>无需握手，直接发送</td></tr><tr><td><strong>不保证可靠性</strong></td><td>不重传、不确认、不保证顺序</td></tr><tr><td><strong>面向报文</strong></td><td>发一次就是一个独立报文，不拆不并</td></tr><tr><td><strong>速度快、开销小</strong></td><td>适合实时场景</td></tr><tr><td><strong>可以广播和组播</strong></td><td>TCP 不支持</td></tr></tbody></table><p>📍 <strong>适用场景：</strong><br>速度优先、实时性要求高，如：<br>直播、游戏、语音通话、视频会议、DNS 查询…</p><hr><h2 id="🔥-TCP-vs-UDP-对比表"><a href="#🔥-TCP-vs-UDP-对比表" class="headerlink" title="🔥 TCP vs UDP 对比表"></a>🔥 TCP vs UDP 对比表</h2><table><thead><tr><th>特性</th><th>TCP</th><th>UDP</th></tr></thead><tbody><tr><td>是否连接</td><td>✅面向连接</td><td>❌ 无连接</td></tr><tr><td>可靠性</td><td>✅可靠</td><td>❌ 不可靠</td></tr><tr><td>顺序性</td><td>✅保证顺序</td><td>❌ 不保证</td></tr><tr><td>速度</td><td>慢</td><td>快</td></tr><tr><td>是否重传</td><td>✅会重传</td><td>❌ 不</td></tr><tr><td>开销</td><td>大</td><td>小</td></tr><tr><td>是否流控&#x2F;拥塞控制</td><td>✅有</td><td>❌ 没有</td></tr><tr><td>分组方式</td><td>字节流</td><td>报文</td></tr><tr><td>是否支持广播</td><td>❌ 不支持</td><td>✅支持</td></tr></tbody></table><hr><h2 id="📡-TCP-连接管理简图"><a href="#📡-TCP-连接管理简图" class="headerlink" title="📡 TCP 连接管理简图"></a>📡 TCP 连接管理简图</h2><p><strong>三次握手</strong>：</p><ol><li>SYN</li><li>SYN + ACK</li><li>ACK</li></ol><p><strong>四次挥手</strong>：</p><ol><li>FIN</li><li>ACK</li><li>FIN</li><li>ACK</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计网 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计网 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>路由器</title>
+      <link href="/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+      <url>/JasmineRain.github.io/2025/12/09/%E8%B7%AF%E7%94%B1%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="🚀-什么是路由器（Router）"><a href="#🚀-什么是路由器（Router）" class="headerlink" title="🚀 什么是路由器（Router）"></a>🚀 什么是路由器（Router）</h2><p><strong>路由器是一种连接多个网络并根据路由规则“转发数据包”的网络层设备。</strong></p><p>它工作在 <strong>OSI 第三层——网络层</strong>。<br>在不同的局域网、广域网之间，路由器负责决定数据包“下一跳到哪去”。</p><hr><h2 id="🧩-路由器的主要作用"><a href="#🧩-路由器的主要作用" class="headerlink" title="🧩 路由器的主要作用"></a>🧩 路由器的主要作用</h2><h3 id="1️⃣-实现不同网络之间的通信"><a href="#1️⃣-实现不同网络之间的通信" class="headerlink" title="1️⃣ 实现不同网络之间的通信"></a>1️⃣ <strong>实现不同网络之间的通信</strong></h3><p>不同网段（如 192.168.1.x 与 192.168.2.x）无法直接通信，需要路由器连接。</p><h3 id="2️⃣-选择最佳路径（路由选择）"><a href="#2️⃣-选择最佳路径（路由选择）" class="headerlink" title="2️⃣ 选择最佳路径（路由选择）"></a>2️⃣ <strong>选择最佳路径（路由选择）</strong></h3><p>路由器根据路由表决定数据从哪条路径走。</p><h3 id="3️⃣-数据包转发（路由转发）"><a href="#3️⃣-数据包转发（路由转发）" class="headerlink" title="3️⃣ 数据包转发（路由转发）"></a>3️⃣ <strong>数据包转发（路由转发）</strong></h3><p>收到数据包 → 查看目的 IP → 查路由表 → 转发到下一跳。</p><h3 id="4️⃣-网络隔离-安全管理"><a href="#4️⃣-网络隔离-安全管理" class="headerlink" title="4️⃣ 网络隔离 + 安全管理"></a>4️⃣ <strong>网络隔离 + 安全管理</strong></h3><p>NAT、防火墙、ACL 等功能能隔离内外网。</p><h3 id="5️⃣-提供无线功能（家用路由器）"><a href="#5️⃣-提供无线功能（家用路由器）" class="headerlink" title="5️⃣ 提供无线功能（家用路由器）"></a>5️⃣ <strong>提供无线功能（家用路由器）</strong></h3><p>无线路由器 &#x3D; 路由 + 交换机 + AP（无线接入点）+ DHCP 等功能。</p><hr><h2 id="📡-路由器的核心功能详解"><a href="#📡-路由器的核心功能详解" class="headerlink" title="📡 路由器的核心功能详解"></a>📡 路由器的核心功能详解</h2><h3 id="①-路由选择（Routing）"><a href="#①-路由选择（Routing）" class="headerlink" title="① 路由选择（Routing）"></a>① 路由选择（Routing）</h3><p>通过路由协议建立路由表，如：</p><ul><li><strong>静态路由</strong></li><li><strong>RIP</strong>（距离向量）</li><li><strong>OSPF</strong>（链路状态）</li><li><strong>BGP</strong>（互联网骨干路由协议）</li></ul><p>路由器计算最优路径，然后填到路由表。</p><h3 id="②-路由转发（Forwarding）"><a href="#②-路由转发（Forwarding）" class="headerlink" title="② 路由转发（Forwarding）"></a>② 路由转发（Forwarding）</h3><p>路由器按“最长前缀匹配”原则，从路由表中找最佳条目，然后把包发出去。</p><h3 id="③-NAT（网络地址转换）"><a href="#③-NAT（网络地址转换）" class="headerlink" title="③ NAT（网络地址转换）"></a>③ NAT（网络地址转换）</h3><p>将私网 IP（如 192.168.x.x）转换成公网 IP，使内网电脑共同访问互联网。</p><p>家用路由器都依靠 NAT 上网。</p><h3 id="④-DHCP（提供自动分配-IP）"><a href="#④-DHCP（提供自动分配-IP）" class="headerlink" title="④ DHCP（提供自动分配 IP）"></a>④ DHCP（提供自动分配 IP）</h3><p>很多路由器内置 DHCP 服务器，为终端自动分配：</p><ul><li>IP 地址</li><li>子网掩码</li><li>网关</li><li>DNS</li></ul><hr><h2 id="🔥-路由器-vs-交换机"><a href="#🔥-路由器-vs-交换机" class="headerlink" title="🔥 路由器 vs 交换机"></a>🔥 路由器 vs 交换机</h2><table><thead><tr><th>设备</th><th>工作层级</th><th>区分依据</th><th>作用</th></tr></thead><tbody><tr><td><strong>交换机（Switch）</strong></td><td>数据链路层（第 2 层）</td><td>MAC 地址</td><td>连接同一局域网</td></tr><tr><td><strong>路由器（Router）</strong></td><td>网络层（第 3 层）</td><td>IP 地址</td><td>连接不同网络</td></tr></tbody></table><p>总结：<br>➡ <strong>交换机连网段，路由器连网络。</strong></p><hr><h2 id="🏠-家用路由器实际上是“三合一”"><a href="#🏠-家用路由器实际上是“三合一”" class="headerlink" title="🏠 家用路由器实际上是“三合一”"></a>🏠 家用路由器实际上是“三合一”</h2><ol><li>路由器（负责转发互联网流量）</li><li>交换机（LAN 口互联）</li><li>无线 AP（Wi-Fi 功能）</li></ol><p>所以普通用户只叫它“路由器”。</p><hr><h2 id="🔥-路由器的组成"><a href="#🔥-路由器的组成" class="headerlink" title="🔥 路由器的组成"></a>🔥 路由器的组成</h2><ul><li><strong>输入端口（Input Port）</strong></li><li><strong>交换结构（Switching Fabric）</strong></li><li><strong>输出端口（Output Port）</strong></li><li><strong>路由处理器（Route Processor）</strong></li></ul><hr><h2 id="🧠-一句话总结"><a href="#🧠-一句话总结" class="headerlink" title="🧠 一句话总结"></a>🧠 一句话总结</h2><p><strong>路由器决定数据包走哪条路，确保不同网络之间能互相通信，它是网络层的核心设备。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计网 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计网 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ARP鍜孯ARP</title>
+      <link href="/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/"/>
+      <url>/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/</url>
+      
+        <content type="html"><![CDATA[<h2 id="✅ARP（Address-Resolution-Protocol）地址解析协议"><a href="#✅ARP（Address-Resolution-Protocol）地址解析协议" class="headerlink" title="✅ARP（Address Resolution Protocol）地址解析协议"></a>✅ARP（Address Resolution Protocol）地址解析协议</h2><p>作用：👉已知IP地址，求MAC地址</p><p>使用场景：🎬主机在发送数据时，链路层需要目标MAC地址。如果ARP缓存里没有，就必须用ARP</p><p>工作流程：👔</p><ul><li>ARP 请求广播：<ul><li>源主机广播：“谁是 IP &#x3D; X.X.X.X？请把 MAC 地址告诉我。”</li></ul></li><li>ARP 响应单播：<ul><li>目标主机回复：“我的 MAC 地址是 xx-xx-xx-xx-xx-xx。”</li></ul></li><li>ARP 缓存<ul><li>主机保存 IP ? MAC 的映射，提高效率。</li></ul></li></ul><p>特点：🕵️</p><ul><li>请求是<strong>广播</strong></li><li>响应是<strong>单播</strong></li><li>属于<strong>网络层和链路层之间的协议</strong></li></ul><h2 id="✅RARP（Reverse-ARP）反向地址解析协议"><a href="#✅RARP（Reverse-ARP）反向地址解析协议" class="headerlink" title="✅RARP（Reverse ARP）反向地址解析协议"></a>✅RARP（Reverse ARP）反向地址解析协议</h2><p>作用：👉已知 MAC 地址，求 IP 地址。</p><p>典型用途：<br>🎬早期用于 无盘工作站。<br>无盘设备只有网卡 MAC，没有本地存储 IP，需要通过 RARP 服务器获取 IP。</p><p>工作流程：👔</p><ul><li>主机发送 RARP 请求广播：<ul><li>“我的 MAC 地址是 xxx，谁能告诉我我的 IP？”</li></ul></li><li>RARP 服务器单播响应：<ul><li>告诉它对应的 IP。</li></ul></li></ul><p>缺点（导致淘汰的原因）：🕵️<br>❌必须在同一局域网<br>❌需要专门的 RARP 服务器<br>❌只能分配 IP，不能配置网关、掩码等</p><p>已被替代：<br>👍BOOTP → DHCP（现代网络几乎都靠 DHCP 分配 IP）</p><p>🔥ARP 与 RARP 对比表</p><table><thead><tr><th>协议</th><th>已知</th><th>求解</th><th>使用方式</th><th>是否继续使用</th></tr></thead><tbody><tr><td>ARP</td><td>IP 地址</td><td>MAC 地址</td><td>广播请求+单播响应</td><td>?仍广泛使用</td></tr><tr><td>RARP</td><td>MAC 地址</td><td>IP 地址</td><td>广播请求 + 单播响应</td><td>? 被 DHCP 取代</td></tr></tbody></table><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>ARP：IP → MAC（发送前查 MAC）<br>RARP：MAC → IP（无盘机查 IP）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计网 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计网 </tag>
             
         </tags>
       
@@ -1075,9 +1150,9 @@
       
         <tags>
             
-            <tag> 八股 </tag>
-            
             <tag> 计算机网络 </tag>
+            
+            <tag> 八股 </tag>
             
         </tags>
       
@@ -1102,9 +1177,9 @@
       
         <tags>
             
-            <tag> c++ </tag>
-            
             <tag> 八股 </tag>
+            
+            <tag> c++ </tag>
             
         </tags>
       
