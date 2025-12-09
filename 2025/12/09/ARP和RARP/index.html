@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ARP和RARP | JasmineRain's blog</title><meta name="author" content="JasmineRain"><meta name="copyright" content="JasmineRain"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="?ARP��Address Resolution Protocol����ַ����Э�����ã�?��֪IP��ַ����MAC��ַ ʹ�ó�����?�����ڷ�������ʱ����·����ҪĿ��MAC��ַ�����ARP������û�У��ͱ�����ARP �������̣�?  ARP ����㲥�� Դ�����㲥����˭�� IP &#x3D; X.X.X.X���">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARP和RARP">
+<meta property="og:url" content="https://molly166.github.io/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/index.html">
+<meta property="og:site_name" content="JasmineRain&#39;s blog">
+<meta property="og:description" content="?ARP��Address Resolution Protocol����ַ����Э�����ã�?��֪IP��ַ����MAC��ַ ʹ�ó�����?�����ڷ�������ʱ����·����ҪĿ��MAC��ַ�����ARP������û�У��ͱ�����ARP �������̣�?  ARP ����㲥�� Դ�����㲥����˭�� IP &#x3D; X.X.X.X���">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png">
+<meta property="article:published_time" content="2025-12-09T01:33:31.000Z">
+<meta property="article:modified_time" content="2025-12-09T01:49:26.453Z">
+<meta property="article:author" content="JasmineRain">
+<meta property="article:tag" content="����">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ARP和RARP",
+  "url": "https://molly166.github.io/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/",
+  "image": "https://molly166.github.io/JasmineRain.github.io/img/head1.png",
+  "datePublished": "2025-12-09T01:33:31.000Z",
+  "dateModified": "2025-12-09T01:49:26.453Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "JasmineRain",
+      "url": "https://molly166.github.io/JasmineRain.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/JasmineRain.github.io/img/favicon.png"><link rel="canonical" href="https://molly166.github.io/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/JasmineRain.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/JasmineRain.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/JasmineRain.github.io/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ARP和RARP',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/JasmineRain.github.io/img/background2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-color: rgba(0,0,0,0);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/JasmineRain.github.io/"><span class="site-name">JasmineRain's blog</span></a><a class="nav-page-title" href="/JasmineRain.github.io/"><span class="site-name">ARP和RARP</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ARP和RARP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-09T01:33:31.000Z" title="发表于 2025-12-09 09:33:31">2025-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-09T01:49:26.453Z" title="更新于 2025-12-09 09:49:26">2025-12-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/JasmineRain.github.io/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">����</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">102</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="ARP��Address-Resolution-Protocol����ַ����Э��"><a href="#ARP��Address-Resolution-Protocol����ַ����Э��" class="headerlink" title="?ARP��Address Resolution Protocol����ַ����Э��"></a>?ARP��Address Resolution Protocol����ַ����Э��</h2><p>���ã�?��֪IP��ַ����MAC��ַ</p>
+<p>ʹ�ó�����?�����ڷ�������ʱ����·����ҪĿ��MAC��ַ�����ARP������û�У��ͱ�����ARP</p>
+<p>�������̣�?</p>
+<ul>
+<li>ARP ����㲥��<ul>
+<li>Դ�����㲥����˭�� IP &#x3D; X.X.X.X����� MAC ��ַ�����ҡ���</li>
+</ul>
+</li>
+<li>ARP ��Ӧ������<ul>
+<li>Ŀ�������ظ������ҵ� MAC ��ַ�� xx-xx-xx-xx-xx-xx����</li>
+</ul>
+</li>
+<li>ARP ����<ul>
+<li>�������� IP ? MAC ��ӳ�䣬���Ч�ʡ�</li>
+</ul>
+</li>
+</ul>
+<p>�ص㣺??</p>
+<ul>
+<li>������<strong>�㲥</strong></li>
+<li>��Ӧ��<strong>����</strong></li>
+<li>����<strong>��������·��֮���Э��</strong></li>
+</ul>
+<h2 id="RARP��Reverse-ARP�������ַ����Э��"><a href="#RARP��Reverse-ARP�������ַ����Э��" class="headerlink" title="? RARP��Reverse ARP�������ַ����Э��"></a>? RARP��Reverse ARP�������ַ����Э��</h2><p>���ã�<br>? ��֪ MAC ��ַ���� IP ��ַ��</p>
+<p>������;��<br>??��????�������� ���̹���վ��<br>�����豸ֻ������ MAC��û�б��ش洢 IP����Ҫͨ�� RARP ��������ȡ IP��</p>
+<p>�������̣�?</p>
+<ul>
+<li>�������� RARP ����㲥��<ul>
+<li>���ҵ� MAC ��ַ�� xxx��˭�ܸ������ҵ� IP����</li>
+</ul>
+</li>
+<li>RARP ������������Ӧ��<ul>
+<li>��������Ӧ�� IP��</li>
+</ul>
+</li>
+</ul>
+<p>ȱ�㣨������̭��ԭ�򣩣�??<br>? ������ͬһ������<br>? ��Ҫר�ŵ� RARP ������<br>? ֻ�ܷ��� IP�������������ء������</p>
+<p>�ѱ������<br>?? BOOTP �� DHCP���ִ����缸������ DHCP ���� IP��</p>
+<p>? ARP �� RARP �Աȱ�</p>
+<table>
+<thead>
+<tr>
+<th>Э��</th>
+<th>��֪</th>
+<th>���</th>
+<th>ʹ�÷�ʽ</th>
+<th>�Ƿ����ʹ��</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ARP</td>
+<td>IP ��ַ</td>
+<td>MAC ��ַ</td>
+<td>�㲥����+������Ӧ</td>
+<td>?�Թ㷺ʹ��</td>
+</tr>
+<tr>
+<td>RARP</td>
+<td>MAC ��ַ</td>
+<td>IP ��ַ</td>
+<td>�㲥���� + ������Ӧ</td>
+<td>? �� DHCP ȡ��</td>
+</tr>
+</tbody></table>
+<h2 id="�ܽ�"><a href="#�ܽ�" class="headerlink" title="�ܽ�"></a>�ܽ�</h2><p>ARP��IP �� MAC������ǰ�� MAC��<br>RARP��MAC �� IP�����̻��� IP��</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io">JasmineRain</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/">https://molly166.github.io/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://molly166.github.io/JasmineRain.github.io" target="_blank">JasmineRain's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/JasmineRain.github.io/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">����</a></div><div class="post-share"><div class="social-share" data-image="/JasmineRain.github.io/img/head1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/JasmineRain.github.io/2025/12/04/%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE/" title="路由选择协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">路由选择协议</div></div><div class="info-2"><div class="info-item-1">🚦 路由选择协议（Routing Protocol）“路由选择协议”用于让路由器自动发现网络拓扑、计算路径、维护路由表，从而实现数据包的最优转发。 📌 路由选择协议分类静态路由 vs 动态路由静态路由（Static Routing）：管理员手动配置，拓扑变化不会自动更新 动态路由（Dynamic Routing）：路由器通过协议自动交换信息并更新路径 内部网关协议（IGP） vs 外部网关协议（EGP）判断依据：自治系统（AS）    类型 范围 协议    IGP 同一个 AS 内部使用 RIP、OSPF、IS-IS、EIGRP   EGP AS 之间 BGP   距离向量、链路状态、路径向量   协议类型 工作方式 特点 示例    距离向量（DV） 路由器告诉邻居“我到各目的地的距离” 简单、收敛慢、环路风险 RIP   链路状态（LS） 路由器向全网泛洪 LSAs，计算最短路径 收敛快，适合大网，复杂 OSPF、IS-IS   路径向量（PV） 记录路径经过的 AS 序列 适合互联网规模 BGP   📕主流路由协议RIP（Routing Information Pr...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">JasmineRain</div><div class="author-info-description">Better Call JasmineRain</div><div class="site-data"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Molly166"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP%EF%BF%BD%EF%BF%BDAddress-Resolution-Protocol%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D6%B7%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D0%AD%EF%BF%BD%EF%BF%BD"><span class="toc-number">1.</span> <span class="toc-text">?ARP��Address Resolution Protocol����ַ����Э��</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RARP%EF%BF%BD%EF%BF%BDReverse-ARP%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D6%B7%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D0%AD%EF%BF%BD%EF%BF%BD"><span class="toc-number">2.</span> <span class="toc-text">? RARP��Reverse ARP�������ַ����Э��</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BF%BD%DC%BD%EF%BF%BD"><span class="toc-number">3.</span> <span class="toc-text">�ܽ�</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/09/ARP%E5%92%8CRARP/" title="ARP和RARP">ARP和RARP</a><time datetime="2025-12-09T01:33:31.000Z" title="发表于 2025-12-09 09:33:31">2025-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/04/%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE/" title="路由选择协议">路由选择协议</a><time datetime="2025-12-04T05:05:05.000Z" title="发表于 2025-12-04 13:05:05">2025-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/12/03/DomReady%E6%97%B6%E9%97%B4/" title="DomReady时间">DomReady时间</a><time datetime="2025-12-03T07:59:38.000Z" title="发表于 2025-12-03 15:59:38">2025-12-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/11/25/%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E5%B7%A5%E5%85%B7/" title="测试覆盖率工具">测试覆盖率工具</a><time datetime="2025-11-25T05:40:18.000Z" title="发表于 2025-11-25 13:40:18">2025-11-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2025/11/22/python%E5%85%A5%E9%97%A8/" title="python入门">python入门</a><time datetime="2025-11-22T11:27:28.000Z" title="发表于 2025-11-22 19:27:28">2025-11-22</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By JasmineRain</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/JasmineRain.github.io/js/utils.js"></script><script src="/JasmineRain.github.io/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"placeholder":"欢迎留言！","requiredFields":["nick","mail"],"enableQQ":true,"meta":["nick","mail"],"pageSize":10}
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'VSEu2s9KNnp8cJTI2HEQNNck-gzGzoHsz',
+      appKey: 'F2i7X1gDtfVEnPEwTOXFy86x',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/JasmineRain.github.io/js/search/local-search.js"></script></div></div></body></html>
