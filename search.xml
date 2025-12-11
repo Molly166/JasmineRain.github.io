@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Prompt设计</title>
+      <link href="/JasmineRain.github.io/2025/12/11/Prompt%E8%AE%BE%E8%AE%A1/"/>
+      <url>/JasmineRain.github.io/2025/12/11/Prompt%E8%AE%BE%E8%AE%A1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Prompt设计&#x3D;如何用指令让大模型产生稳定、可控、正确的输出。</p><h2 id="Prompt的基本结构"><a href="#Prompt的基本结构" class="headerlink" title="Prompt的基本结构"></a>Prompt的基本结构</h2><ul><li>角色(Role)</li><li>任务(Task)</li><li>格式要求(Format)</li><li>约束(Constraints)</li><li>示例(Examples,Few-shot)</li></ul><p>优秀的Prompt&#x3D;角色+任务+限制+示例+输出格式</p><h2 id="Prompt的四大经典模式"><a href="#Prompt的四大经典模式" class="headerlink" title="Prompt的四大经典模式"></a>Prompt的四大经典模式</h2><h3 id="Zero-shot-Prompt"><a href="#Zero-shot-Prompt" class="headerlink" title="Zero-shot Prompt"></a>Zero-shot Prompt</h3><p>不给示例，让大模型直接回答。</p><blockquote><p>初步测试模型能力。</p></blockquote><h3 id="Few-shot-Prompt"><a href="#Few-shot-Prompt" class="headerlink" title="Few-shot Prompt"></a>Few-shot Prompt</h3><p>给模型几个示例，让它模仿输出格式</p><blockquote><p>提高稳定性、一致性、减少模型走偏</p></blockquote><h3 id="Chain-of-Thought"><a href="#Chain-of-Thought" class="headerlink" title="Chain of Thought"></a>Chain of Thought</h3><p>让模型展示推理过程，提升逻辑正确率</p><blockquote><p>数学、推理、复杂逻辑测试</p></blockquote><h3 id="Self-Consistency"><a href="#Self-Consistency" class="headerlink" title="Self-Consistency"></a>Self-Consistency</h3><p>让模型给多个答案，再综合最佳解</p><blockquote><p>减少错误和逻辑混乱</p></blockquote><h2 id="Prompt设计中常见问题-如何避免"><a href="#Prompt设计中常见问题-如何避免" class="headerlink" title="Prompt设计中常见问题&amp;如何避免"></a>Prompt设计中常见问题&amp;如何避免</h2><h3 id="模糊指令"><a href="#模糊指令" class="headerlink" title="模糊指令"></a>模糊指令</h3><p>模型会胡乱发挥</p><blockquote><p>用明确任务+输出格式避免</p></blockquote><h3 id="缺乏格式约束"><a href="#缺乏格式约束" class="headerlink" title="缺乏格式约束"></a>缺乏格式约束</h3><p>模型输出多余内容</p><blockquote><p>用结构化输出约束</p></blockquote><h3 id="提问太宽泛"><a href="#提问太宽泛" class="headerlink" title="提问太宽泛"></a>提问太宽泛</h3><p>容易出现幻觉</p><blockquote><p>用范围限制</p></blockquote><h2 id="Prompt在大模型中的应用"><a href="#Prompt在大模型中的应用" class="headerlink" title="Prompt在大模型中的应用"></a>Prompt在大模型中的应用</h2><ol><li>构建测评用例：限定任务、限定输出格式、避免模型自由发挥</li><li>测试稳定性：用同一Prompt多次调用，看模型输出一致性</li><li>对话场景模拟：多轮、自然语言噪声、用户不规范输入</li><li>Prompt防越狱(Jailbreak)测试:测试模型是否能守住安全边界</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测试 </category>
+          
+          <category> 大模型 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Prompt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ADSL</title>
       <link href="/JasmineRain.github.io/2025/12/09/ADSL/"/>
       <url>/JasmineRain.github.io/2025/12/09/ADSL/</url>
