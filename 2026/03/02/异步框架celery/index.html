@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>异步框架celery | JasmineRain's blog</title><meta name="author" content="JasmineRain"><meta name="copyright" content="JasmineRain"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="总结Celery是一个处理大量消息的分布式系统，专注于实时处理的异步任务队列，同时也支持任务调度  基于分布式架构，系统应用各种组件架构在不同的服务器上，在不同服务器上的不同组件之间，通过消息通信，进行协调工作的模式为分布式系统。 当用户访问分布式系统时（访问多台服务器）就和访问一台服务器一样，用户感知是一样的 能够实现负载均衡，避免单点故障  异步任务和同步任务的区别，同步任务是卡着、阻塞着，当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异步框架celery">
+<meta property="og:url" content="https://molly166.github.io/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/index.html">
+<meta property="og:site_name" content="JasmineRain&#39;s blog">
+<meta property="og:description" content="总结Celery是一个处理大量消息的分布式系统，专注于实时处理的异步任务队列，同时也支持任务调度  基于分布式架构，系统应用各种组件架构在不同的服务器上，在不同服务器上的不同组件之间，通过消息通信，进行协调工作的模式为分布式系统。 当用户访问分布式系统时（访问多台服务器）就和访问一台服务器一样，用户感知是一样的 能够实现负载均衡，避免单点故障  异步任务和同步任务的区别，同步任务是卡着、阻塞着，当">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png">
+<meta property="article:published_time" content="2026-03-02T13:57:12.000Z">
+<meta property="article:modified_time" content="2026-03-02T15:06:46.340Z">
+<meta property="article:author" content="JasmineRain">
+<meta property="article:tag" content="测试框架">
+<meta property="article:tag" content="异步">
+<meta property="article:tag" content="分布式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://molly166.github.io/JasmineRain.github.io/img/head1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "异步框架celery",
+  "url": "https://molly166.github.io/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/",
+  "image": "https://molly166.github.io/JasmineRain.github.io/img/head1.png",
+  "datePublished": "2026-03-02T13:57:12.000Z",
+  "dateModified": "2026-03-02T15:06:46.340Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "JasmineRain",
+      "url": "https://molly166.github.io/JasmineRain.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/JasmineRain.github.io/img/favicon.png"><link rel="canonical" href="https://molly166.github.io/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/JasmineRain.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/JasmineRain.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/JasmineRain.github.io/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '异步框架celery',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/JasmineRain.github.io/img/background2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">80</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-color: rgba(0,0,0,0);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/JasmineRain.github.io/"><span class="site-name">JasmineRain's blog</span></a><a class="nav-page-title" href="/JasmineRain.github.io/"><span class="site-name">异步框架celery</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> File</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Label</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Classification</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/JasmineRain.github.io/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/JasmineRain.github.io/picture/"><i class="fa-fw fas fa-images"></i><span> Picture</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> Message board</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/JasmineRain.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">异步框架celery</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-02T13:57:12.000Z" title="发表于 2026-03-02 21:57:12">2026-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-02T15:06:46.340Z" title="更新于 2026-03-02 23:06:46">2026-03-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/JasmineRain.github.io/categories/%E6%B5%8B%E5%BC%80/">测开</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">725</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>Celery</strong>是一个处理大量消息的分布式系统，专注于实时处理的异步任务队列，同时也支持任务调度</p>
+<hr>
+<p>基于<strong>分布式</strong>架构，系统应用各种组件架构在不同的服务器上，在不同服务器上的不同组件之间，通过消息通信，进行协调工作的模式为分布式系统。</p>
+<p>当用户访问分布式系统时（访问多台服务器）就和访问一台服务器一样，用户感知是一样的</p>
+<p>能够实现负载均衡，避免单点故障</p>
+<hr>
+<p><strong>异步</strong>任务和同步任务的区别，同步任务是卡着、阻塞着，当一个请求遇见io操作时，同步会一直等待，当什么时候返回后主程序将继续向下执行；异步遇见io操作时，主进程不等待返回值，继续进行其他的业务操作，返回值将被存到数据库中（无结果就算了），主程序需要时，再到数据库中提取需要的值，继续向下运行</p>
+<p>异步极大运用了资源</p>
+<h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><p>celery主要由三部分组成：消息中间件(message broker)，任务执行单元(worker)和任务执行结果存储(task result store)组成</p>
+<hr>
+<p><img src="/JasmineRain.github.io/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/Screenshot%202026-03-02%20222413.png" alt="构成"></p>
+<p>celery工作在生产者-消费者模型之下。</p>
+<p>用户发起请求，user接收请求，这部分属于生产者，执行请求，执行业务，需求完成后，给用户发送通知；发给中间件(RabbitMQ、redis等)，放到消息队列中；消费者需要监听队列，celery worker执行发通知的业务；</p>
+<p>发通知属于耗时操作，需要用异步实现，selery直接调用进行异步实现，进程+协程技术（进程不能无限开，再在每一个进程下面开协程增加并发）</p>
+<p>结果会存储在task result store中，需要时可以直接用</p>
+<hr>
+<h3 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h3><p>celery本身不提供消息服务，但是可以方便的和第三方提供的消息中间件集成。包括RabbitMQ，Redis等等</p>
+<h3 id="任务执行单元"><a href="#任务执行单元" class="headerlink" title="任务执行单元"></a>任务执行单元</h3><p>Worker是celery提供的任务执行单元，worker并发的运行再分布式的系统节点中</p>
+<h3 id="任务结果存储"><a href="#任务结果存储" class="headerlink" title="任务结果存储"></a>任务结果存储</h3><p>Task result store用来存储Worker执行的任务的结果，celery支持以不同方式存储任务的结果，包括AMQP，redis等<br>另外，celery还支持不同的并发和序列化的手段</p>
+<ul>
+<li>并发：Predork、Eventlet、gevent、threads&#x2F;single threaded</li>
+<li>序列化：pickle、json、yaml、msgpack、zlib、bzip2 compression、Cryptographic message signing等等</li>
+</ul>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>异步任务：将耗时操作任务提交给celery去异步执行，比如发送短信&#x2F;邮件、消息推送、音视频处理等等</p>
+<p>定时任务：定时执行某件事情，比如每天数据统计</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>1.简单<br>2.高可用<br>3.快速<br>4.灵活</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io">JasmineRain</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://molly166.github.io/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/">https://molly166.github.io/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://molly166.github.io/JasmineRain.github.io" target="_blank">JasmineRain's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/JasmineRain.github.io/tags/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">测试框架</a><a class="post-meta__tags" href="/JasmineRain.github.io/tags/%E5%BC%82%E6%AD%A5/">异步</a><a class="post-meta__tags" href="/JasmineRain.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></div><div class="post-share"><div class="social-share" data-image="/JasmineRain.github.io/img/head1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/JasmineRain.github.io/2026/01/13/Cookie%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Cookie和Session的区别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Cookie和Session的区别</div></div><div class="info-2"><div class="info-item-1">核心概念CookieCookie（HTTP Cookie）是由服务器发送到用户浏览器并保存在本地的一小块数据。Cookie会在浏览器下次向同一服务器发起请求时被携带并发送到服务器。Cookie主要用于：  会话管理：保存用户的登录状态、会话标识等 个性化设置：记住用户的偏好设置、语言选择等 行为追踪：记录用户的浏览行为，用于分析和广告投放  Cookie的特点：  存储在客户端（浏览器） 每次HTTP请求会自动携带 有大小限制（通常4KB） 可以设置过期时间 可以被JavaScript访问（HttpOnly属性除外）  SessionSession（会话）是服务器端用来存储用户会话信息的机制。当用户首次访问服务器时，服务器会为该用户创建一个唯一的Session，并生成一个SessionID。这个SessionID通过Cookie返回给客户端，客户端在后续请求中携带这个SessionID，服务器据此识别用户并获取对应的会话数据。 Session的特点：  存储在服务器端（内存、数据库或缓存） 数据安全性高，客户端无法直接访问 存储容量大，不受浏览器限制 生命周期由服务器控制 依赖C...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/JasmineRain.github.io/img/head1.png" onerror="this.onerror=null;this.src='/JasmineRain.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">JasmineRain</div><div class="author-info-description">Better Call JasmineRain</div><div class="site-data"><a href="/JasmineRain.github.io/archives/"><div class="headline">文章</div><div class="length-num">80</div></a><a href="/JasmineRain.github.io/tags/"><div class="headline">标签</div><div class="length-num">82</div></a><a href="/JasmineRain.github.io/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Molly166"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">构成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">消息中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E5%8D%95%E5%85%83"><span class="toc-number">2.2.</span> <span class="toc-text">任务执行单元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%BB%93%E6%9E%9C%E5%AD%98%E5%82%A8"><span class="toc-number">2.3.</span> <span class="toc-text">任务结果存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">3.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">优点</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/" title="异步框架celery">异步框架celery</a><time datetime="2026-03-02T13:57:12.000Z" title="发表于 2026-03-02 21:57:12">2026-03-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2026/01/13/Cookie%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Cookie和Session的区别">Cookie和Session的区别</a><time datetime="2026-01-13T10:02:37.000Z" title="发表于 2026-01-13 18:02:37">2026-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2026/01/13/HTTP%E5%92%8CHTTPS%E7%9A%84%E5%8C%BA%E5%88%AB/" title="HTTP和HTTPS的区别">HTTP和HTTPS的区别</a><time datetime="2026-01-13T09:47:14.000Z" title="发表于 2026-01-13 17:47:14">2026-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2026/01/12/%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/" title="乐观锁和悲观锁">乐观锁和悲观锁</a><time datetime="2026-01-12T06:43:59.000Z" title="发表于 2026-01-12 14:43:59">2026-01-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/JasmineRain.github.io/2026/01/12/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" title="HTTP状态码">HTTP状态码</a><time datetime="2026-01-12T06:13:49.000Z" title="发表于 2026-01-12 14:13:49">2026-01-12</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By JasmineRain</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/JasmineRain.github.io/js/utils.js"></script><script src="/JasmineRain.github.io/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"placeholder":"欢迎留言！","requiredFields":["nick","mail"],"enableQQ":true,"meta":["nick","mail"],"pageSize":10}
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'VSEu2s9KNnp8cJTI2HEQNNck-gzGzoHsz',
+      appKey: 'F2i7X1gDtfVEnPEwTOXFy86x',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/JasmineRain.github.io/js/search/local-search.js"></script></div></div></body></html>

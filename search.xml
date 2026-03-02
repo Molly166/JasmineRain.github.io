@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>异步框架celery</title>
+      <link href="/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/"/>
+      <url>/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/</url>
+      
+        <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>Celery</strong>是一个处理大量消息的分布式系统，专注于实时处理的异步任务队列，同时也支持任务调度</p><hr><p>基于<strong>分布式</strong>架构，系统应用各种组件架构在不同的服务器上，在不同服务器上的不同组件之间，通过消息通信，进行协调工作的模式为分布式系统。</p><p>当用户访问分布式系统时（访问多台服务器）就和访问一台服务器一样，用户感知是一样的</p><p>能够实现负载均衡，避免单点故障</p><hr><p><strong>异步</strong>任务和同步任务的区别，同步任务是卡着、阻塞着，当一个请求遇见io操作时，同步会一直等待，当什么时候返回后主程序将继续向下执行；异步遇见io操作时，主进程不等待返回值，继续进行其他的业务操作，返回值将被存到数据库中（无结果就算了），主程序需要时，再到数据库中提取需要的值，继续向下运行</p><p>异步极大运用了资源</p><h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><p>celery主要由三部分组成：消息中间件(message broker)，任务执行单元(worker)和任务执行结果存储(task result store)组成</p><hr><p><img src="/JasmineRain.github.io/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/Screenshot%202026-03-02%20222413.png" alt="构成"></p><p>celery工作在生产者-消费者模型之下。</p><p>用户发起请求，user接收请求，这部分属于生产者，执行请求，执行业务，需求完成后，给用户发送通知；发给中间件(RabbitMQ、redis等)，放到消息队列中；消费者需要监听队列，celery worker执行发通知的业务；</p><p>发通知属于耗时操作，需要用异步实现，selery直接调用进行异步实现，进程+协程技术（进程不能无限开，再在每一个进程下面开协程增加并发）</p><p>结果会存储在task result store中，需要时可以直接用</p><hr><h3 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h3><p>celery本身不提供消息服务，但是可以方便的和第三方提供的消息中间件集成。包括RabbitMQ，Redis等等</p><h3 id="任务执行单元"><a href="#任务执行单元" class="headerlink" title="任务执行单元"></a>任务执行单元</h3><p>Worker是celery提供的任务执行单元，worker并发的运行再分布式的系统节点中</p><h3 id="任务结果存储"><a href="#任务结果存储" class="headerlink" title="任务结果存储"></a>任务结果存储</h3><p>Task result store用来存储Worker执行的任务的结果，celery支持以不同方式存储任务的结果，包括AMQP，redis等<br>另外，celery还支持不同的并发和序列化的手段</p><ul><li>并发：Predork、Eventlet、gevent、threads&#x2F;single threaded</li><li>序列化：pickle、json、yaml、msgpack、zlib、bzip2 compression、Cryptographic message signing等等</li></ul><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>异步任务：将耗时操作任务提交给celery去异步执行，比如发送短信&#x2F;邮件、消息推送、音视频处理等等</p><p>定时任务：定时执行某件事情，比如每天数据统计</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>1.简单<br>2.高可用<br>3.快速<br>4.灵活</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测开 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 测试框架 </tag>
+            
+            <tag> 异步 </tag>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cookie和Session的区别</title>
       <link href="/JasmineRain.github.io/2026/01/13/Cookie%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
       <url>/JasmineRain.github.io/2026/01/13/Cookie%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
