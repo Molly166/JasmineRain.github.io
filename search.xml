@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>asyncio</title>
+      <link href="/JasmineRain.github.io/2026/03/03/asyncio/"/>
+      <url>/JasmineRain.github.io/2026/03/03/asyncio/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><code>asyncio</code> 是 Python 3.4+ 内置的<strong>异步 I&#x2F;O</strong> 框架，基于<strong>协程</strong>与<strong>事件循环</strong>，在单线程内实现并发，适用于 I&#x2F;O 密集型场景（网络请求、文件读写、数据库访问等）。</p><p><strong>核心思想</strong>：在等待 I&#x2F;O 时让出控制权，由事件循环调度其他协程执行，从而避免阻塞、提高吞吐。</p><p>asyncio 通过 <strong>async&#x2F;await + 事件循环</strong> 在单线程内实现 I&#x2F;O 并发，适合高并发、低延迟的网络与 I&#x2F;O 场景。掌握「协程 → Task → gather&#x2F;run」这条主线，并避免在协程内使用阻塞调用，即可写出清晰、高效的无阻塞代码。</p><hr><h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><table><thead><tr><th>概念</th><th>说明</th></tr></thead><tbody><tr><td><strong>协程 (coroutine)</strong></td><td>用 <code>async def</code> 定义的异步函数，调用后返回协程对象，需在事件循环中运行</td></tr><tr><td><strong>事件循环 (event loop)</strong></td><td>负责调度、执行协程，在 I&#x2F;O 就绪时唤醒对应协程</td></tr><tr><td><strong>await</strong></td><td>在协程内挂起当前协程，等待可等待对象完成，期间事件循环可执行其他协程</td></tr></tbody></table><p><strong>可等待对象 (Awaitable)</strong>：协程、<code>asyncio.Task</code>、<code>asyncio.Future</code> 等。</p><hr><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="定义与运行协程"><a href="#定义与运行协程" class="headerlink" title="定义与运行协程"></a>定义与运行协程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)  <span class="comment"># 模拟 I/O，不阻塞线程</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;world&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 3.7+ 推荐入口</span></span><br><span class="line">asyncio.run(main())</span><br></pre></td></tr></table></figure><ul><li><code>async def</code> 定义协程；直接调用 <code>main()</code> 只会得到协程对象，不会执行。</li><li><code>asyncio.run(main())</code> 创建事件循环、运行协程、结束后关闭循环，是运行「最外层」协程的标准方式。</li></ul><h3 id="并发执行多个协程"><a href="#并发执行多个协程" class="headerlink" title="并发执行多个协程"></a>并发执行多个协程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">fetch</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)  <span class="comment"># 模拟请求</span></span><br><span class="line">    <span class="keyword">return</span> url</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># 方式一：asyncio.gather —— 并发执行，收集结果</span></span><br><span class="line">    results = <span class="keyword">await</span> asyncio.gather(</span><br><span class="line">        fetch(<span class="string">&quot;https://a.com&quot;</span>),</span><br><span class="line">        fetch(<span class="string">&quot;https://b.com&quot;</span>),</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">print</span>(results)  <span class="comment"># [&#x27;https://a.com&#x27;, &#x27;https://b.com&#x27;]</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 方式二：创建 Task，可单独 await 或再 gather</span></span><br><span class="line">    t1 = asyncio.create_task(fetch(<span class="string">&quot;https://c.com&quot;</span>))</span><br><span class="line">    t2 = asyncio.create_task(fetch(<span class="string">&quot;https://d.com&quot;</span>))</span><br><span class="line">    r1, r2 = <span class="keyword">await</span> asyncio.gather(t1, t2)</span><br></pre></td></tr></table></figure><ul><li><code>asyncio.create_task(coro)</code> 将协程包装为 <strong>Task</strong>，加入当前事件循环并尽快调度，实现并发。</li><li><code>asyncio.gather(*aws)</code> 并发执行多个可等待对象，全部完成后返回结果列表；任一异常会传播（可用 <code>return_exceptions=True</code> 收集异常）。</li></ul><hr><h2 id="常用-API"><a href="#常用-API" class="headerlink" title="常用 API"></a>常用 API</h2><table><thead><tr><th>API</th><th>作用</th></tr></thead><tbody><tr><td><code>asyncio.run(coro)</code></td><td>运行顶层协程，管理事件循环生命周期</td></tr><tr><td><code>asyncio.create_task(coro)</code></td><td>创建 Task，并发执行</td></tr><tr><td><code>asyncio.gather(*aws, return_exceptions=False)</code></td><td>并发执行并汇总结果</td></tr><tr><td><code>asyncio.sleep(delay)</code></td><td>异步休眠，不阻塞线程</td></tr><tr><td><code>asyncio.wait_for(aw, timeout)</code></td><td>带超时的 await</td></tr><tr><td><code>asyncio.to_thread(func, *args)</code></td><td>在线程池中运行同步函数，避免阻塞事件循环 (3.9+)</td></tr></tbody></table><hr><h2 id="与多线程的对比"><a href="#与多线程的对比" class="headerlink" title="与多线程的对比"></a>与多线程的对比</h2><table><thead><tr><th>维度</th><th>asyncio</th><th>多线程 (threading)</th></tr></thead><tbody><tr><td>并发模型</td><td>协作式，单线程多协程</td><td>抢占式，多线程</td></tr><tr><td>适用场景</td><td>I&#x2F;O 密集型</td><td>I&#x2F;O 或 CPU 密集型（GIL 下 CPU 仍受限）</td></tr><tr><td>切换成本</td><td>协程切换成本低</td><td>线程切换、锁竞争成本较高</td></tr><tr><td>编程复杂度</td><td>需统一 async&#x2F;await，避免阻塞调用</td><td>需处理锁、竞态</td></tr></tbody></table><p><strong>注意</strong>：在协程内调用<strong>同步阻塞</strong>函数（如 <code>time.sleep</code>、同步 HTTP 请求）会阻塞整个事件循环。应改用 <code>asyncio.sleep</code>、异步 HTTP 库（如 <code>aiohttp</code>），或用 <code>asyncio.to_thread()</code> 将阻塞调用放到线程池。</p><hr><h2 id="实践建议"><a href="#实践建议" class="headerlink" title="实践建议"></a>实践建议</h2><ol><li><strong>入口统一用 <code>asyncio.run()</code></strong>，避免手动 get_event_loop&#x2F;run_until_complete。</li><li><strong>需要并发时显式创建 Task</strong>：先 <code>create_task</code> 再 <code>await</code>，才能并发；若直接 <code>await coro1(); await coro2()</code> 则为顺序执行。</li><li><strong>资源清理</strong>：用 <code>async with</code> 管理异步上下文（如 <code>aiohttp.ClientSession</code>），确保异常时也能释放。</li><li><strong>异常处理</strong>：在协程内用 try&#x2F;except；<code>gather</code> 时可按需使用 <code>return_exceptions=True</code> 统一处理异常与结果。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 测开 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 异步 </tag>
+            
+            <tag> 协程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>异步框架celery</title>
       <link href="/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/"/>
       <url>/JasmineRain.github.io/2026/03/02/%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6celery/</url>
@@ -20,9 +49,9 @@
       
         <tags>
             
-            <tag> 测试框架 </tag>
-            
             <tag> 异步 </tag>
+            
+            <tag> 测试框架 </tag>
             
             <tag> 分布式 </tag>
             
